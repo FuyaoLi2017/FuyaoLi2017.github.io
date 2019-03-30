@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #20995e;
+  background: #c64a0b;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2991,14 +2991,12 @@ pre .javascript .function {
     text-align: justify;
   }
 }
-@media screen and (min-width: 1200px) {
-  body {
-    background-image: url("/images/golden-gate-bridge.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-  }
-  #footer a {
-    color: #eee;
-  }
+body {
+  background-image: url("/images/golden-gate-bridge.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+#footer a {
+  color: #eee;
 }
