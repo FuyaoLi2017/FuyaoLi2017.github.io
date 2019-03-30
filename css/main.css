@@ -1,3 +1,30 @@
+font:enable: true # 外链字体库地址，例如,
+font:enable: true host:# 全局字体，应用在 body 元素上,
+font:enable: true global:external: true {
+  family: Merriweather;
+}
+font:enable: true # 标题字体 (h1,
+font:enable: true h2,
+font:enable: true h3,
+font:enable: true h4,
+font:enable: true h5,
+font:enable: true h6),
+font:enable: true headings:external: true {
+  family: Merriweather;
+}
+font:enable: true # 文章字体,
+font:enable: true posts:external: true {
+  family: Merriweather;
+}
+font:enable: true # Logo 字体,
+font:enable: true logo:external: true {
+  family: Lobster Two;
+  size: 24;
+}
+font:enable: true # 代码字体，应用于 code 以及代码块,
+font:enable: true codes:external: true {
+  family: PT Mono;
+}
 /* normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif; /* 1 */
@@ -1823,7 +1850,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff7941;
+  background: #95b886;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2989,5 +3016,16 @@ pre .javascript .function {
 @media (max-width: 767px) {
   .post-body {
     text-align: justify;
+  }
+}
+@media screen and (min-width: 1200px) {
+  body {
+    background-image: url("/images/golden-gate-bridge.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  #footer a {
+    color: #eee;
   }
 }

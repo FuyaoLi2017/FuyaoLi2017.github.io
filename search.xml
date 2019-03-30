@@ -1,17 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[How to build a Blog based on Hexo]]></title>
-    <url>%2F2019%2F03%2F25%2Ffirst-article%2F</url>
-    <content type="text"></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>How to build a Blog based on Hexo</title>
+      <link href="/2019/03/25/first-article/"/>
+      <url>/2019/03/25/first-article/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
       <categories>
-        <category>Computer Science</category>
-        <category>Personal Projects</category>
+          
+          <category> Computer Science </category>
+          
+          <category> Personal Projects </category>
+          
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Python</tag>
-        <tag>Web Development</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> Python </tag>
+            
+            <tag> Web Development </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
