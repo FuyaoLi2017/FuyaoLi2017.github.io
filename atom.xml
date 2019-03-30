@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Fuyao Li</title>
+  
+  <subtitle>UC Irvine, Department of Computer Science, Master of Science in Networked Systems</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://fuyaoli.me/"/>
+  <updated>2019-03-30T04:47:11.529Z</updated>
+  <id>http://fuyaoli.me/</id>
+  
+  <author>
+    <name>Fuyao Li</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to build a Blog based on Hexo</title>
+    <link href="http://fuyaoli.me/2019/03/25/first-article/"/>
+    <id>http://fuyaoli.me/2019/03/25/first-article/</id>
+    <published>2019-03-25T18:38:17.000Z</published>
+    <updated>2019-03-30T04:47:11.529Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Computer Science" scheme="http://fuyaoli.me/categories/Computer-Science/"/>
+    
+      <category term="Personal Projects" scheme="http://fuyaoli.me/categories/Computer-Science/Personal-Projects/"/>
+    
+    
+      <category term="Java" scheme="http://fuyaoli.me/tags/Java/"/>
+    
+      <category term="Python" scheme="http://fuyaoli.me/tags/Python/"/>
+    
+      <category term="Web Development" scheme="http://fuyaoli.me/tags/Web-Development/"/>
+    
+  </entry>
+  
+</feed>
