@@ -1,38 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>How to build a Blog based on Hexo</title>
-      <link href="/2019/03/25/first-article/"/>
-      <url>/2019/03/25/first-article/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
+<search>
+  <entry>
+    <title><![CDATA[Deployment workflow]]></title>
+    <url>%2F2019%2F04%2F01%2FSecure-Deployment-of-Projects%2F</url>
+    <content type="text"><![CDATA[Intuition of writing this BlogAs a intern in ardent academy, we work on Agile development environment. There are something I need to pay attention to when I want to submit a PR to the working repo. Starting a task Go to the “Active Sprints” section of your project and find an Issue. Change the status from “To Do” to “IN PROGRESS” and start your development. Completing a task Once tbe development is done and create a pull request (PR) and commit your code, follow the conventional commits and git flow. We rely on a Continuous Integration and Delivery system (CI/CD) called Drone. Drone runs unit tests then deploys our applications to their staging and production environments. Visit our Drone dashboard at drone.ardentlabs.io to see the progress of your build. Unit testing Run Prettier to format your code: npm run prettier Commit the changes to a new branch. Each branch should contain one functional change, accompanied with tests and/or migration scripts. The smaller the change, the faster it takes for others to review. Feature: feat/office-location Refactor: refactor/rename-classroom Fix: fix/lesson-ordering Hotfixes (Urgent fixes to master) Fork hotfix branch from master (hotfix/everything-is-on-fire) Implement your hotfix - be sure to run Prettier and follow Conventional Commits Push your branch to GitHub Create two PRs, one merging into master and one merging into develop Request reviews from reviewers then make any requested changes The two PRs should be reviewed in tandem. Once they pass reviews, merge both PRs. How to do release git checkout master git pull git checkout develop git pull git merge master npm run release git push –follow-tags git checkout master git merge develop git push]]></content>
       <categories>
-          
-          <category> Computer Science </category>
-          
-          <category> Personal Projects </category>
-          
+        <category>Computer Science</category>
+        <category>web developments</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-            <tag> Python </tag>
-            
-            <tag> Web Development </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>deployment</tag>
+        <tag>ardent academy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[How to build a Blog based on Hexo]]></title>
+    <url>%2F2019%2F03%2F25%2Ffirst-article%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>Computer Science</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+      </tags>
+  </entry>
 </search>
