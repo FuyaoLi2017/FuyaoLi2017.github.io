@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fuyaoli.me/"/>
-  <updated>2019-04-01T21:44:28.940Z</updated>
+  <updated>2019-04-08T01:52:38.740Z</updated>
   <id>http://fuyaoli.me/</id>
   
   <author>
@@ -15,6 +15,47 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>inline comment in Github PR</title>
+    <link href="http://fuyaoli.me/2019/04/07/inline-comment-in-Github-PR/"/>
+    <id>http://fuyaoli.me/2019/04/07/inline-comment-in-Github-PR/</id>
+    <published>2019-04-08T00:13:40.000Z</published>
+    <updated>2019-04-08T01:52:38.740Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Github-Feature：-inline-comment-in-Github-PR"><a href="#Github-Feature：-inline-comment-in-Github-PR" class="headerlink" title="Github Feature： inline comment in Github PR"></a>Github Feature： inline comment in Github PR</h3><ul><li>I didn’t notice this before and I think this is a very good feature. It could give suggestions regarding specific lines.</li><li><p>The suggestioned lines can be commited directly. It is very convenient to use.<br><img src="../uploads/inlineSuggestion.png" alt="alter text"></p></li><li><p>Refer to this <a href="https://twitter.com/github/status/1053360435074949120" target="_blank" rel="noopener">link</a> for more detailed GIF.</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Github-Feature：-inline-comment-in-Github-PR&quot;&gt;&lt;a href=&quot;#Github-Feature：-inline-comment-in-Github-PR&quot; class=&quot;headerlink&quot; title=&quot;Github
+      
+    
+    </summary>
+    
+      <category term="tricks" scheme="http://fuyaoli.me/categories/tricks/"/>
+    
+      <category term="Computer Science" scheme="http://fuyaoli.me/categories/tricks/Computer-Science/"/>
+    
+    
+      <category term="Github" scheme="http://fuyaoli.me/tags/Github/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>graphql-1</title>
+    <link href="http://fuyaoli.me/2019/04/03/graphql-1/"/>
+    <id>http://fuyaoli.me/2019/04/03/graphql-1/</id>
+    <published>2019-04-03T18:41:32.000Z</published>
+    <updated>2019-04-03T18:41:32.795Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Deployment workflow</title>
