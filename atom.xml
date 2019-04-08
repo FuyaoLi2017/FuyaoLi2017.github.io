@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fuyaoli.me/"/>
-  <updated>2019-04-08T02:05:10.616Z</updated>
+  <updated>2019-04-08T02:17:16.381Z</updated>
   <id>http://fuyaoli.me/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://fuyaoli.me/2019/04/07/inline-comment-in-Github-PR/"/>
     <id>http://fuyaoli.me/2019/04/07/inline-comment-in-Github-PR/</id>
     <published>2019-04-08T00:13:40.000Z</published>
-    <updated>2019-04-08T02:05:10.616Z</updated>
+    <updated>2019-04-08T02:17:16.381Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="Github-Feature：-inline-comment-in-Github-PR"><a href="#Github-Feature：-inline-comment-in-Github-PR" class="headerlink" title="Github Feature： inline comment in Github PR"></a>Github Feature： inline comment in Github PR</h3><ul><li>I didn’t notice this before and I think this is a very good feature. It could give suggestions regarding specific lines.</li><li><p>The suggestioned lines can be commited directly. It is very convenient to use.<br><img src="pictures/inlineSuggestion.png" alt="alter text"></p></li><li><p>Refer to this <a href="https://twitter.com/github/status/1053360435074949120" target="_blank" rel="noopener">link</a> for more detailed GIF.</p></li></ul>]]></content>
+    <content type="html"><![CDATA[<h3 id="Github-Feature：-inline-comment-in-Github-PR"><a href="#Github-Feature：-inline-comment-in-Github-PR" class="headerlink" title="Github Feature： inline comment in Github PR"></a>Github Feature： inline comment in Github PR</h3><ul><li>I didn’t notice this before and I think this is a very good feature. It could give suggestions regarding specific lines.</li><li><p>The suggestioned lines can be commited directly. It is very convenient to use.<br><img src="https://res.cloudinary.com/dbuk0to55/image/upload/v1554689790/inlineSuggestion.png" alt="alter text"></p></li><li><p>Refer to this <a href="https://twitter.com/github/status/1053360435074949120" target="_blank" rel="noopener">link</a> for more detailed GIF.</p></li></ul>]]></content>
     
     <summary type="html">
     
