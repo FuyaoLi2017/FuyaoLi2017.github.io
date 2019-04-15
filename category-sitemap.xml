@@ -8,36 +8,29 @@
     </url>
 
     <url>
-        <loc>http://fuyaoli.me/categories/Computer-Science/web-developments/</loc>
-        <lastmod>2019-04-01T21:44:28.940Z</lastmod>
+        <loc>http://fuyaoli.me/categories/website/</loc>
+        <lastmod>2019-04-15T02:54:09.894Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://fuyaoli.me/categories/Github/</loc>
+        <lastmod>2019-04-15T02:54:38.038Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://fuyaoli.me/categories/GraphQL/</loc>
+        <lastmod>2019-04-15T03:00:13.645Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://fuyaoli.me/categories/Computer-Science/</loc>
-        <lastmod>2019-04-01T22:55:56.794Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://fuyaoli.me/categories/Computer-Science/website/</loc>
-        <lastmod>2019-04-01T22:55:56.794Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://fuyaoli.me/categories/tricks/</loc>
-        <lastmod>2019-04-08T02:17:16.381Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://fuyaoli.me/categories/tricks/Computer-Science/</loc>
-        <lastmod>2019-04-08T02:17:16.381Z</lastmod>
+        <lastmod>2019-04-15T03:12:00.397Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
