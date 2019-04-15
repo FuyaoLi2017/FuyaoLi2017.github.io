@@ -17,28 +17,7 @@
     </url>
 
     <url>
-        <loc>http://fuyaoli.me/tags/Computer-Science/</loc>
-        <lastmod>2019-04-15T03:00:13.645Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://fuyaoli.me/tags/JavaScript/</loc>
-        <lastmod>2019-04-15T03:00:13.645Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://fuyaoli.me/tags/deployment/</loc>
-        <lastmod>2019-04-15T03:12:00.397Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://fuyaoli.me/tags/ardent-academy/</loc>
         <lastmod>2019-04-15T03:12:00.397Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -47,6 +26,27 @@
     <url>
         <loc>http://fuyaoli.me/tags/web-developments/</loc>
         <lastmod>2019-04-15T03:12:00.397Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://fuyaoli.me/tags/ardent-academy/</loc>
+        <lastmod>2019-04-15T03:34:11.429Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://fuyaoli.me/tags/Computer-Science/</loc>
+        <lastmod>2019-04-15T03:34:11.429Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://fuyaoli.me/tags/JavaScript/</loc>
+        <lastmod>2019-04-15T03:34:11.429Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
