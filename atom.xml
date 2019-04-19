@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fuyaoli.me/"/>
-  <updated>2019-04-15T03:34:11.429Z</updated>
+  <updated>2019-04-19T20:13:13.741Z</updated>
   <id>http://fuyaoli.me/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://fuyaoli.me/2019/04/14/graphql-2/"/>
     <id>http://fuyaoli.me/2019/04/14/graphql-2/</id>
     <published>2019-04-15T02:57:36.000Z</published>
-    <updated>2019-04-15T03:34:11.429Z</updated>
+    <updated>2019-04-19T20:13:13.741Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="GraphQL-2-GraphQL-Schema-Language"><a href="#GraphQL-2-GraphQL-Schema-Language" class="headerlink" title="GraphQL - 2: GraphQL Schema Language"></a>GraphQL - 2: GraphQL Schema Language</h1><h2 id="GraphQL-Type-System"><a href="#GraphQL-Type-System" class="headerlink" title="GraphQL Type System"></a>GraphQL Type System</h2><p>GraphQL have strong type systems. A field can be amrked with an exclamation mark ! to indicate that the field is obligatory (will not be null). Otherwise, it will be nillable (optional fields).</p><h2 id="Root-types"><a href="#Root-types" class="headerlink" title="Root types"></a>Root types</h2><p>Root types can be used as the starting point for a certain operation.</p><ul><li>Query</li><li>Mutation</li><li>Subscription<h3 id="Notice"><a href="#Notice" class="headerlink" title="Notice"></a>Notice</h3>Every graphQL implementation must ahve define a query and a mutation and subscription can be optional.</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">type Query &#123;</span><br><span class="line">    books: [Book]</span><br><span class="line">    book(title:String!): Book</span><br><span class="line">    book_by_id(id:ID!):Book</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Mutation &#123;</span><br><span class="line">    addBook(title: String!): Book</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Subscription &#123;</span><br><span class="line">    bookAdded: Book</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="GraphQL-2-GraphQL-Schema-Language"><a href="#GraphQL-2-GraphQL-Schema-Language" class="headerlink" title="GraphQL - 2: GraphQL Schema Language"></a>GraphQL - 2: GraphQL Schema Language</h1><h2 id="GraphQL-Type-System"><a href="#GraphQL-Type-System" class="headerlink" title="GraphQL Type System"></a>GraphQL Type System</h2><p>GraphQL have strong type systems. A field can be amrked with an exclamation mark ! to indicate that the field is obligatory (will not be null). Otherwise, it will be nillable (optional fields).</p><ul><li>During execution/resolutoin of a query, the type system helps to determine what to do next.</li><li>When crafting queries, the introspection mechanism provided through the type system, allows us to do syntax directly editing and guide us with respect to what is possible and available.</li></ul><h2 id="Root-types"><a href="#Root-types" class="headerlink" title="Root types"></a>Root types</h2><p>Root types can be used as the starting point for a certain operation.</p><ul><li>Query</li><li>Mutation</li><li>Subscription<h3 id="Notice"><a href="#Notice" class="headerlink" title="Notice"></a>Notice</h3>Every graphQL implementation must ahve define a query and a mutation and subscription can be optional.</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">type Query &#123;</span><br><span class="line">    books: [Book]</span><br><span class="line">    book(title:String!): Book</span><br><span class="line">    book_by_id(id:ID!):Book</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Mutation &#123;</span><br><span class="line">    addBook(title: String!): Book</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Subscription &#123;</span><br><span class="line">    bookAdded: Book</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="Scalar-Types"><a href="#Scalar-Types" class="headerlink" title="Scalar Types"></a>Scalar Types</h2><h3 id="built-in-GraphQL-scalar-types"><a href="#built-in-GraphQL-scalar-types" class="headerlink" title="built-in GraphQL scalar types"></a>built-in GraphQL scalar types</h3><ul><li>int</li><li>float</li><li>boolean</li><li>String</li><li>ID (used uniquely identify an object)</li></ul><h3 id="Custom-scalar-types"><a href="#Custom-scalar-types" class="headerlink" title="Custom scalar types"></a>Custom scalar types</h3><ul><li>Isbn (example)</li><li>[Author] (square brackets represent a list of things)</li></ul><h2 id="Array-representation"><a href="#Array-representation" class="headerlink" title="Array representation"></a>Array representation</h2><ul><li>Used to express a list of objects</li><li>[int]</li><li>[Book]</li></ul><h2 id="Enum"><a href="#Enum" class="headerlink" title="Enum"></a>Enum</h2><p>An enum has a limited set of values it can possibly to take on.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">enum trafficLight &#123;</span><br><span class="line">    RED</span><br><span class="line">    GREEN</span><br><span class="line">    YELLOW</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="Interface"><a href="#Interface" class="headerlink" title="Interface"></a>Interface</h2><ul><li><p>An interface is similar to a type definition, it defines a list of fields, but it can’t be instantiated.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">interface Document &#123;</span><br><span class="line">    title: String</span><br><span class="line">    text: String</span><br><span class="line">    authors: [Author]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>A regular type that implements the interface can extend the interface.</p></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type Book implements Document &#123;</span><br><span class="line">    id: ID!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>The implementing type automatically contains the fields defined in the interface, they don’t need to be mentioned explicitly.</li><li>To access the additional fields of a type implementing an interface in a query, we always need to make a distinction by type using inline fragments.(refer to section3.3.6)</li></ul><h2 id="Union"><a href="#Union" class="headerlink" title="Union"></a>Union</h2><ul><li>A <em>Union</em> is a common type for serveral defining types. If an object is of a union type, it could be any of it s defining types.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union Product = Book | Software | Bread</span><br></pre></td></tr></table></figure></li></ul><h3 id="Differences-between-Union-and-interfaces"><a href="#Differences-between-Union-and-interfaces" class="headerlink" title="Differences between Union and interfaces"></a>Differences between Union and interfaces</h3><ul><li>interface is to express common fields</li><li>union don’t need to have fields in common</li><li>To access the fields of a union type, we need to make a distinction by type using in the inline fragments.(section3.3.6)</li></ul><h2 id="Input-Types"><a href="#Input-Types" class="headerlink" title="Input Types"></a>Input Types</h2><p>Input types are used for passing input data in the form of arguments. Input types are used in mutations. When an instance of an input type is serialized, the data is formatted in JSON syntax.</p><ul><li>It looks like the definition of regular object types, but with keyword <strong>input</strong> instead of <strong>type</strong>.</li><li>!!!! Input types can’t have fields of an object type, only scalar types, list types, and other input types.</li><li>To prevent mixing, it is a useful convention, to amrk input types, e.g. by using the postfix Input.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">input BookInput &#123;</span><br><span class="line">    title: String</span><br><span class="line">    authors: [AuthorInput]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">input AuthorInput &#123;</span><br><span class="line">    name: String</span><br><span class="line">    books: [BookInput]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul>]]></content>
     
     <summary type="html">
     
@@ -37,11 +37,11 @@
       <category term="GraphQL" scheme="http://fuyaoli.me/categories/GraphQL/"/>
     
     
-      <category term="ardent academy" scheme="http://fuyaoli.me/tags/ardent-academy/"/>
+      <category term="JavaScript" scheme="http://fuyaoli.me/tags/JavaScript/"/>
     
       <category term="Computer Science" scheme="http://fuyaoli.me/tags/Computer-Science/"/>
     
-      <category term="JavaScript" scheme="http://fuyaoli.me/tags/JavaScript/"/>
+      <category term="ardent academy" scheme="http://fuyaoli.me/tags/ardent-academy/"/>
     
   </entry>
   
@@ -93,11 +93,11 @@
       <category term="GraphQL" scheme="http://fuyaoli.me/categories/GraphQL/"/>
     
     
-      <category term="ardent academy" scheme="http://fuyaoli.me/tags/ardent-academy/"/>
+      <category term="JavaScript" scheme="http://fuyaoli.me/tags/JavaScript/"/>
     
       <category term="Computer Science" scheme="http://fuyaoli.me/tags/Computer-Science/"/>
     
-      <category term="JavaScript" scheme="http://fuyaoli.me/tags/JavaScript/"/>
+      <category term="ardent academy" scheme="http://fuyaoli.me/tags/ardent-academy/"/>
     
   </entry>
   
@@ -122,9 +122,9 @@
       <category term="Computer Science" scheme="http://fuyaoli.me/categories/Computer-Science/"/>
     
     
-      <category term="deployment" scheme="http://fuyaoli.me/tags/deployment/"/>
-    
       <category term="ardent academy" scheme="http://fuyaoli.me/tags/ardent-academy/"/>
+    
+      <category term="deployment" scheme="http://fuyaoli.me/tags/deployment/"/>
     
       <category term="web developments" scheme="http://fuyaoli.me/tags/web-developments/"/>
     
@@ -151,9 +151,9 @@
       <category term="website" scheme="http://fuyaoli.me/categories/website/"/>
     
     
-      <category term="blog" scheme="http://fuyaoli.me/tags/blog/"/>
-    
       <category term="Computer Science" scheme="http://fuyaoli.me/tags/Computer-Science/"/>
+    
+      <category term="blog" scheme="http://fuyaoli.me/tags/blog/"/>
     
   </entry>
   
