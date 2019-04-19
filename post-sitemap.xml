@@ -8,8 +8,8 @@
     </url>
 
     <url>
-        <loc>http://fuyaoli.me/2019/04/14/graphql-2/</loc>
-        <lastmod>2019-04-19T20:13:13.741Z</lastmod>
+        <loc>http://fuyaoli.me/2019/04/19/graphql-3/</loc>
+        <lastmod>2019-04-19T22:46:27.168Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -17,7 +17,15 @@
 
     <url>
         <loc>http://fuyaoli.me/2019/04/03/graphql-1/</loc>
-        <lastmod>2019-04-15T03:34:07.263Z</lastmod>
+        <lastmod>2019-04-19T22:46:09.924Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://fuyaoli.me/2019/04/14/graphql-2/</loc>
+        <lastmod>2019-04-19T22:45:48.762Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
