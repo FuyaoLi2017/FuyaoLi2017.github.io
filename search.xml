@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode Check In]]></title>
+    <url>%2F2019%2F05%2F09%2Fleetcode-everyday%2F</url>
+    <content type="text"><![CDATA[Check in Leetcode submissionsToday is May 9th, start from today, I will solve at least two leetcode questions every day and mark in right here. All submission will be uploaded to my Github repo.!leetcode submission repo link For important questions and algorithms, I will try my best to summary it and post articles in my blog. May 9th1. leetcode 58: Length of Last Word link: https://leetcode.com/problems/length-of-last-word/ submission: https://github.com/FuyaoLi2017/leetcode/blob/master/String/leetcode_058_LengthofLastWord.java 2. leetcode 59: Spiral Matrix II link: https://leetcode.com/problems/spiral-matrix-ii/ submission: https://github.com/FuyaoLi2017/leetcode/blob/master/Array/leetcode_059_SpiralMatrixII.java]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Computer Science</tag>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[GraphQL-4 Building A GraphQL API]]></title>
     <url>%2F2019%2F05%2F01%2Fgraphql-4%2F</url>
     <content type="text"><![CDATA[In this chapter, we discuss the features of a GraphQL API and mechanics behind it. 4.1 GraphQL API mechanicsAll GraphQL APIs offer a number features that we need to understand in order build GraphQL APIs. The heart of this configuration is the GraphQL schema with its type definition. GraphQL Validation: Any request that is received by a GraphQL API, is first syntactically validated against the GraphQL SCHEMA. GraphQL Execution: After the request has been validated, it needs to be interpreted and execute by the server to create a response. Execution of queries: The graphQL SERVER returns a result that structurally mirrors the shape of the requested query. Before sending to the client, the server serializes the result, typically in JSON format. Creating a response to a query is actually a traversal of the graph. Resolver functions: the resolver function is called recursively. For each of the subgraphs produced as output. A subgraph is an instance of a certain type. When such a subgraph is processed, the resolver function of its corresponding type is called. If the resolver function for a certain subgraph produces a scalar value like a string or number, the recursion terminates in that branch. The resolver function receive three arguments. obj: the parent object of the fields being resolved(graphQL query/mutation/subscription).(often null or left out). args: the arguements provided to the fields in the graphQL query/mutation/subscription. context: holds important contextual information, such as authenticated user and access to a database. Execution of subscription: There is no confirmation response. A response is only generated when the event actually occurs. The best practice to realize this bidirectional communication via teh webSocket protocol. 4.2 GraphQL server architecture4.2.1 Green Field case: without involving any existing legacy systemsThere can be multiple API endpoints lying above business logic.RPC APIs, REST APIs, GraphQL APIs =&gt; Business logic =&gt; DB 4.2.2 Legacy caseCases we need to deal with existing legacy services and databases. 4.3 GraphQL API design methodology]]></content>
@@ -8,8 +20,8 @@
         <category>GraphQL</category>
       </categories>
       <tags>
-        <tag>Computer Science</tag>
         <tag>ardent academy</tag>
+        <tag>Computer Science</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
@@ -21,8 +33,8 @@
         <category>GraphQL</category>
       </categories>
       <tags>
-        <tag>Computer Science</tag>
         <tag>ardent academy</tag>
+        <tag>Computer Science</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
@@ -34,8 +46,8 @@
         <category>GraphQL</category>
       </categories>
       <tags>
-        <tag>Computer Science</tag>
         <tag>ardent academy</tag>
+        <tag>Computer Science</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
@@ -59,8 +71,8 @@
         <category>GraphQL</category>
       </categories>
       <tags>
-        <tag>Computer Science</tag>
         <tag>ardent academy</tag>
+        <tag>Computer Science</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
