@@ -45,15 +45,22 @@
     </url>
 
     <url>
-        <loc>http://fuyaoli.me/tags/Computer-Science/</loc>
+        <loc>http://fuyaoli.me/tags/algorithm/</loc>
         <lastmod>2019-05-09T21:55:08.821Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://fuyaoli.me/tags/algorithm/</loc>
-        <lastmod>2019-05-09T21:55:08.821Z</lastmod>
+        <loc>http://fuyaoli.me/tags/Computer-Science/</loc>
+        <lastmod>2019-05-11T23:52:33.316Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://fuyaoli.me/tags/leetcode/</loc>
+        <lastmod>2019-05-11T23:52:33.316Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
