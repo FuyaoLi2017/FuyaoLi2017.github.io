@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[backtracking]]></title>
     <url>%2F2019%2F05%2F11%2Fbacktracking%2F</url>
-    <content type="text"><![CDATA[1. SubsetsGiven a set of distinct integers, nums, return all possible subsets (the power set).Note: The solution set must not contain duplicate subsets. Solution1 use layer by layer DFS 1234567891011121314151617181920class Solution &#123; public List&lt;List&lt;Integer&gt;&gt; subsets(int[] nums) &#123; List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;(); if (nums == null || nums.length == 0) return result; dfs(result, new ArrayList&lt;&gt;(), nums, 0); return result; &#125; public void dfs(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; current, int[] nums, int index) &#123; if (index == nums.length) &#123; result.add(new ArrayList&lt;&gt;(current)); return; &#125; current.add(nums[index]); dfs(result, current, nums, index + 1); current.remove(current.size() - 1); dfs(result, current, nums, index + 1); &#125;&#125; use for loop to traverse in DFS 123456789101112131415public List&lt;List&lt;Integer&gt;&gt; subsets(int[] nums) &#123; List&lt;List&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;(); Arrays.sort(nums); backtrack(list, new ArrayList&lt;&gt;(), nums, 0); return list;&#125;private void backtrack(List&lt;List&lt;Integer&gt;&gt; list , List&lt;Integer&gt; tempList, int [] nums, int start)&#123; list.add(new ArrayList&lt;&gt;(tempList)); for(int i = start; i &lt; nums.length; i++)&#123; tempList.add(nums[i]); backtrack(list, tempList, nums, i + 1); tempList.remove(tempList.size() - 1); &#125;&#125; 2. Subsets23. Combinations https://leetcode.com/problems/combinations/ Given two integers n and k, return all possible combinations of k numbers out of 1 … n.Input: n = 4, k = 2Output:[ [2,4], [3,4], [2,3], [1,2], [1,3], [1,4],] a better solution, using the input variable as counter, high vote answer 12345678910111213141516public static List&lt;List&lt;Integer&gt;&gt; combine(int n, int k) &#123; List&lt;List&lt;Integer&gt;&gt; combs = new ArrayList&lt;List&lt;Integer&gt;&gt;(); combine(combs, new ArrayList&lt;Integer&gt;(), 1, n, k); return combs; &#125; public static void combine(List&lt;List&lt;Integer&gt;&gt; combs, List&lt;Integer&gt; comb, int start, int n, int k) &#123; if(k==0) &#123; combs.add(new ArrayList&lt;Integer&gt;(comb)); return; &#125; for(int i=start;i&lt;=n;i++) &#123; comb.add(i); combine(combs, comb, i+1, n, k-1); comb.remove(comb.size()-1); &#125; &#125; My solution, using for loop to DFS 12345678910111213141516171819202122232425class Solution &#123; public List&lt;List&lt;Integer&gt;&gt; combine(int n, int k) &#123; if (n &lt; k || k == 0) &#123; return new ArrayList&lt;&gt;(); &#125; List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;(); dfs(result, new ArrayList&lt;&gt;(), 1, n, k); return result; &#125; private void dfs(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; currentList, int index, int n, int k) &#123; if (currentList.size() == k) &#123; result.add(new ArrayList&lt;&gt;(currentList)); return; &#125; if (index == n+1) &#123; // have reach the end of the array and has not accumlated to k elements return; &#125; for (int i = index; i &lt;= n; i++) &#123; currentList.add(i); dfs(result, currentList, i + 1, n, k); currentList.remove(currentList.size() - 1); &#125; &#125;&#125;]]></content>
+    <content type="text"><![CDATA[1. SubsetsGiven a set of distinct integers, nums, return all possible subsets (the power set).Note: The solution set must not contain duplicate subsets. Solution1 use layer by layer DFS 1234567891011121314151617181920class Solution &#123; public List&lt;List&lt;Integer&gt;&gt; subsets(int[] nums) &#123; List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;(); if (nums == null || nums.length == 0) return result; dfs(result, new ArrayList&lt;&gt;(), nums, 0); return result; &#125; public void dfs(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; current, int[] nums, int index) &#123; if (index == nums.length) &#123; result.add(new ArrayList&lt;&gt;(current)); return; &#125; current.add(nums[index]); dfs(result, current, nums, index + 1); current.remove(current.size() - 1); dfs(result, current, nums, index + 1); &#125;&#125; use for loop to traverse in DFS 123456789101112131415public List&lt;List&lt;Integer&gt;&gt; subsets(int[] nums) &#123; List&lt;List&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;(); Arrays.sort(nums); backtrack(list, new ArrayList&lt;&gt;(), nums, 0); return list;&#125;private void backtrack(List&lt;List&lt;Integer&gt;&gt; list , List&lt;Integer&gt; tempList, int [] nums, int start)&#123; list.add(new ArrayList&lt;&gt;(tempList)); for(int i = start; i &lt; nums.length; i++)&#123; tempList.add(nums[i]); backtrack(list, tempList, nums, i + 1); tempList.remove(tempList.size() - 1); &#125;&#125; 2. Subsets23. Combinations https://leetcode.com/problems/combinations/ Given two integers n and k, return all possible combinations of k numbers out of 1 … n.Input: n = 4, k = 2Output:[[2,4],[3,4],[2,3],[1,2],[1,3],[1,4]] a better solution, using the input variable as counter, high vote answer 12345678910111213141516public static List&lt;List&lt;Integer&gt;&gt; combine(int n, int k) &#123; List&lt;List&lt;Integer&gt;&gt; combs = new ArrayList&lt;List&lt;Integer&gt;&gt;(); combine(combs, new ArrayList&lt;Integer&gt;(), 1, n, k); return combs; &#125; public static void combine(List&lt;List&lt;Integer&gt;&gt; combs, List&lt;Integer&gt; comb, int start, int n, int k) &#123; if(k==0) &#123; combs.add(new ArrayList&lt;Integer&gt;(comb)); return; &#125; for(int i=start;i&lt;=n;i++) &#123; comb.add(i); combine(combs, comb, i+1, n, k-1); comb.remove(comb.size()-1); &#125; &#125; My solution, using for loop to DFS 12345678910111213141516171819202122232425class Solution &#123; public List&lt;List&lt;Integer&gt;&gt; combine(int n, int k) &#123; if (n &lt; k || k == 0) &#123; return new ArrayList&lt;&gt;(); &#125; List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;(); dfs(result, new ArrayList&lt;&gt;(), 1, n, k); return result; &#125; private void dfs(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; currentList, int index, int n, int k) &#123; if (currentList.size() == k) &#123; result.add(new ArrayList&lt;&gt;(currentList)); return; &#125; if (index == n+1) &#123; // have reach the end of the array and has not accumlated to k elements return; &#125; for (int i = index; i &lt;= n; i++) &#123; currentList.add(i); dfs(result, currentList, i + 1, n, k); currentList.remove(currentList.size() - 1); &#125; &#125;&#125;]]></content>
       <categories>
         <category>algorithm</category>
       </categories>
@@ -44,8 +44,8 @@
         <category>GraphQL</category>
       </categories>
       <tags>
-        <tag>Computer Science</tag>
         <tag>ardent academy</tag>
+        <tag>Computer Science</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
@@ -57,8 +57,8 @@
         <category>GraphQL</category>
       </categories>
       <tags>
-        <tag>Computer Science</tag>
         <tag>ardent academy</tag>
+        <tag>Computer Science</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
@@ -70,8 +70,8 @@
         <category>GraphQL</category>
       </categories>
       <tags>
-        <tag>Computer Science</tag>
         <tag>ardent academy</tag>
+        <tag>Computer Science</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
@@ -95,8 +95,8 @@
         <category>GraphQL</category>
       </categories>
       <tags>
-        <tag>Computer Science</tag>
         <tag>ardent academy</tag>
+        <tag>Computer Science</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
