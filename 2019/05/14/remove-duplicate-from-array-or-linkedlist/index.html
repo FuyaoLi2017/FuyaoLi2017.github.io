@@ -118,7 +118,7 @@
 
 
 
-  <meta name="keywords" content="Computer Science,ardent academy,JavaScript,">
+  <meta name="keywords" content="Computer Science,algorithm,array,linkedlist,two pointers,">
 
 
 
@@ -131,18 +131,18 @@
 
 
 
-<meta name="description" content="This series of articles are summarized from “GraphQL API design”  1.1 Interaction between frontend and backendThese needs of frontends regarding the interaction with backends are quite universal. Thu">
-<meta name="keywords" content="Computer Science,ardent academy,JavaScript">
+<meta name="description" content="The Key idea of remove duplicate is two pointers. Remove Duplicates from Sorted ArrayGiven a sorted array nums, remove the duplicates in-place such that each element appear only once and return the ne">
+<meta name="keywords" content="Computer Science,algorithm,array,linkedlist,two pointers">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GraphQL-1 GraphQL Introduction">
-<meta property="og:url" content="http://fuyaoli.me/2019/04/03/graphql-1/index.html">
+<meta property="og:title" content="Remove duplicate elements from array or linkedlist">
+<meta property="og:url" content="http://fuyaoli.me/2019/05/14/remove-duplicate-from-array-or-linkedlist/index.html">
 <meta property="og:site_name" content="Fuyao Li">
-<meta property="og:description" content="This series of articles are summarized from “GraphQL API design”  1.1 Interaction between frontend and backendThese needs of frontends regarding the interaction with backends are quite universal. Thu">
+<meta property="og:description" content="The Key idea of remove duplicate is two pointers. Remove Duplicates from Sorted ArrayGiven a sorted array nums, remove the duplicates in-place such that each element appear only once and return the ne">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-19T22:46:09.924Z">
+<meta property="og:updated_time" content="2019-05-15T05:41:52.451Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GraphQL-1 GraphQL Introduction">
-<meta name="twitter:description" content="This series of articles are summarized from “GraphQL API design”  1.1 Interaction between frontend and backendThese needs of frontends regarding the interaction with backends are quite universal. Thu">
+<meta name="twitter:title" content="Remove duplicate elements from array or linkedlist">
+<meta name="twitter:description" content="The Key idea of remove duplicate is two pointers. Remove Duplicates from Sorted ArrayGiven a sorted array nums, remove the duplicates in-place such that each element appear only once and return the ne">
 
 
 
@@ -172,13 +172,13 @@
 
 
 
-  <link rel="canonical" href="http://fuyaoli.me/2019/04/03/graphql-1/">
+  <link rel="canonical" href="http://fuyaoli.me/2019/05/14/remove-duplicate-from-array-or-linkedlist/">
 
 
 
 
 
-  <title>GraphQL-1 GraphQL Introduction | Fuyao Li</title>
+  <title>Remove duplicate elements from array or linkedlist | Fuyao Li</title>
   
 
 
@@ -367,7 +367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://fuyaoli.me/2019/04/03/graphql-1/">
+    <link itemprop="mainEntityOfPage" href="http://fuyaoli.me/2019/05/14/remove-duplicate-from-array-or-linkedlist/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fuyao Li">
@@ -384,7 +384,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">GraphQL-1 GraphQL Introduction</h1>
+          <h1 class="post-title" itemprop="name headline">Remove duplicate elements from array or linkedlist</h1>
         
 
         <div class="post-meta">
@@ -396,8 +396,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-03T11:41:32-07:00">
-                2019-04-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-14T21:59:46-07:00">
+                2019-05-14
               </time>
             
 
@@ -419,8 +419,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/GraphQL/" itemprop="url" rel="index">
-                    <span itemprop="name">GraphQL</span>
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">Leetcode</span>
                   </a>
                 </span>
 
@@ -437,8 +437,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/04/03/graphql-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/03/graphql-1/" itemprop="commentCount"></span>
+                <a href="/2019/05/14/remove-duplicate-from-array-or-linkedlist/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/14/remove-duplicate-from-array-or-linkedlist/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -446,7 +446,7 @@
 
           
           
-             <span id="/2019/04/03/graphql-1/" class="leancloud_visitors" data-flag-title="GraphQL-1 GraphQL Introduction">
+             <span id="/2019/05/14/remove-duplicate-from-array-or-linkedlist/" class="leancloud_visitors" data-flag-title="Remove duplicate elements from array or linkedlist">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -477,26 +477,28 @@
       
 
       
-        <blockquote>
-<p>This series of articles are summarized from “GraphQL API design”</p>
+        <p>The Key idea of remove duplicate is two pointers.</p>
+<h1 id="Remove-Duplicates-from-Sorted-Array"><a href="#Remove-Duplicates-from-Sorted-Array" class="headerlink" title="Remove Duplicates from Sorted Array"></a>Remove Duplicates from Sorted Array</h1><p>Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.<br>Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[j] != nums[i]) &#123;</span><br><span class="line">            i++;</span><br><span class="line">            nums[i] = nums[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Remove-Duplicates-from-Sorted-Array-II"><a href="#Remove-Duplicates-from-Sorted-Array-II" class="headerlink" title="Remove Duplicates from Sorted Array II"></a>Remove Duplicates from Sorted Array II</h1><ul>
+<li>use two pointers<blockquote>
+<p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/" target="_blank" rel="noopener">https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// my solution</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length &lt;= <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> nums.length;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> previous = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> currentCount = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> end = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == previous &amp;&amp; currentCount &lt; <span class="number">2</span>) &#123;</span><br><span class="line">                currentCount++;</span><br><span class="line">                nums[end++] = nums[i];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[i] == previous &amp;&amp; currentCount &gt;= <span class="number">2</span>) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                currentCount = <span class="number">1</span>;</span><br><span class="line">                nums[end++] = nums[i];</span><br><span class="line">                previous = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> end;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<h2 id="1-1-Interaction-between-frontend-and-backend"><a href="#1-1-Interaction-between-frontend-and-backend" class="headerlink" title="1.1 Interaction between frontend and backend"></a>1.1 Interaction between frontend and backend</h2><p>These needs of frontends regarding the interaction with backends are quite universal. Thus, a couple of philosophies, such as RPC, SOAP, REST, and GraphQL, have been developed to structure the interaction between frontend and backend.</p>
-<h2 id="What-is-GraphQL"><a href="#What-is-GraphQL" class="headerlink" title="What is GraphQL?"></a>What is GraphQL?</h2><p>GraphQL allows us to build APIs for retrieving data, writing data and getting notified when data changes.</p>
-<p>GraphQL offers:</p>
-<ul>
-<li>a declarative, typed query language for APIs</li>
-<li>a schema language for specifying data structures</li>
-<li>a runtime for building APIs</li>
+</li>
 </ul>
-<h2 id="Why-are-there-two-languages-in-GraphQL"><a href="#Why-are-there-two-languages-in-GraphQL" class="headerlink" title="Why are there two languages in GraphQL?"></a>Why are there two languages in GraphQL?</h2><h3 id="1-Query-language"><a href="#1-Query-language" class="headerlink" title="1. Query language"></a>1. Query language</h3><p>The purpose of the query language is to interact with the GraphQL endpoint.</p>
-<h3 id="2-schema-definition-language"><a href="#2-schema-definition-language" class="headerlink" title="2. schema definition language"></a>2. schema definition language</h3><p>To define the structure of the business data exposed by the GraphQL API. API providers use the schema definition language to specify the interface.</p>
-<h2 id="What-the-graph-in-GraphQL"><a href="#What-the-graph-in-GraphQL" class="headerlink" title="What the graph in GraphQL?"></a>What the graph in GraphQL?</h2><p>A graph is a very generic data structure, it should be possible to express the data of any application in the form of a graph. And this graph, formed by all application data, is what we call the graph in GraphQL.</p>
-<p>All data is exposed via a single endpoint in GraphQL. Compared with REST endpoints, the single GraphQL endpoint expose a lot of data. This comprehensive set of data with its entities and relationships between the various entities forms the graph of GraphQL.</p>
-<p>REST APIs exposes data not in a format of generic type. Both REST and GraphQL are capable of expressing application data in form of a graph, with GraphQL the graph is more explicit, since it is served on a single endpoint.</p>
-<h2 id="A-GraphQL-application"><a href="#A-GraphQL-application" class="headerlink" title="A GraphQL application"></a>A GraphQL application</h2><ul>
-<li>GraphQL API: part of the backend</li>
-<li>GraphQL client: part of the frontend</li>
-</ul>
+<p>// a more concise solution<br>// remove duplicates from a sorted array<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> n : nums)</span><br><span class="line">        <span class="keyword">if</span>(i &lt; <span class="number">1</span> || n &gt; nums[i - <span class="number">1</span>])</span><br><span class="line">            nums[i++] = n;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Remove Duplicates from Sorted Array II (allow duplicates up to 2):</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> n : nums)</span><br><span class="line">      <span class="keyword">if</span> (i &lt; <span class="number">2</span> || n &gt; nums[i - <span class="number">2</span>])</span><br><span class="line">         nums[i++] = n;</span><br><span class="line">   <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Remove-Duplicates-from-Sorted-List"><a href="#Remove-Duplicates-from-Sorted-List" class="headerlink" title="Remove Duplicates from Sorted List"></a>Remove Duplicates from Sorted List</h1><blockquote>
+<p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/" target="_blank" rel="noopener">https://leetcode.com/problems/remove-duplicates-from-sorted-list/</a></p>
+</blockquote>
+<p>Given a sorted linked list, delete all duplicates such that each element appear only once.</p>
+<p>Example 1:</p>
+<p>Input: 1-&gt;1-&gt;2<br>Output: 1-&gt;2<br>Example 2:</p>
+<p>Input: 1-&gt;1-&gt;2-&gt;3-&gt;3<br>Output: 1-&gt;2-&gt;3</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// iterative</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode list = head;</span><br><span class="line"></span><br><span class="line">         <span class="keyword">while</span>(list != <span class="keyword">null</span>) &#123;</span><br><span class="line">        	 <span class="keyword">if</span> (list.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        		 <span class="keyword">break</span>;</span><br><span class="line">        	 &#125;</span><br><span class="line">        	 <span class="keyword">if</span> (list.val == list.next.val) &#123;</span><br><span class="line">        		 list.next = list.next.next;</span><br><span class="line">        	 &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        		 list = list.next;</span><br><span class="line">        	 &#125;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// recursive</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>)<span class="keyword">return</span> head;</span><br><span class="line">        head.next = deleteDuplicates(head.next);</span><br><span class="line">        <span class="keyword">return</span> head.val == head.next.val ? head.next : head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Remove-Duplicates-from-Sorted-List-II"><a href="#Remove-Duplicates-from-Sorted-List-II" class="headerlink" title="Remove Duplicates from Sorted List II"></a>Remove Duplicates from Sorted List II</h1><blockquote>
+<p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/" target="_blank" rel="noopener">https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/</a></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">if</span> (head == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">         ListNode dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">         dummy.next = head;</span><br><span class="line">         ListNode prev = dummy;</span><br><span class="line">         ListNode cur = head;</span><br><span class="line">         <span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;</span><br><span class="line">             <span class="comment">// use a while loop to skip all same values for current</span></span><br><span class="line">             <span class="keyword">while</span> (cur.next != <span class="keyword">null</span> &amp;&amp; cur.val == cur.next.val) &#123;</span><br><span class="line">                 cur = cur.next;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="comment">// there is only one element without duplicate,</span></span><br><span class="line">             <span class="comment">// the code didn't enter the while loop above</span></span><br><span class="line">             <span class="comment">// can move pre to pre.next</span></span><br><span class="line">             <span class="keyword">if</span> (prev.next == cur) &#123;</span><br><span class="line">                 prev = prev.next;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="comment">// else, point the NEXT!! pointer of pre to cur.next</span></span><br><span class="line">             <span class="keyword">else</span> &#123;</span><br><span class="line">                 prev.next = cur.next;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="comment">// advance the cur pointer after each operation</span></span><br><span class="line">             cur = cur.next;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> dummy.next;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -516,9 +518,13 @@
           
             <a href="/tags/Computer-Science/" rel="tag"># Computer Science</a>
           
-            <a href="/tags/ardent-academy/" rel="tag"># ardent academy</a>
+            <a href="/tags/algorithm/" rel="tag"># algorithm</a>
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/linkedlist/" rel="tag"># linkedlist</a>
+          
+            <a href="/tags/two-pointers/" rel="tag"># two pointers</a>
           
         </div>
       
@@ -531,8 +537,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/01/Secure-Deployment-of-Projects/" rel="next" title="Deployment workflow">
-                <i class="fa fa-chevron-left"></i> Deployment workflow
+              <a href="/2019/05/11/backtracking/" rel="next" title="backtracking">
+                <i class="fa fa-chevron-left"></i> backtracking
               </a>
             
           </div>
@@ -540,10 +546,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/07/inline-comment-in-Github-PR/" rel="prev" title="inline comment in Github PR">
-                inline comment in Github PR <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -722,7 +724,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Interaction-between-frontend-and-backend"><span class="nav-number">1.</span> <span class="nav-text">1.1 Interaction between frontend and backend</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-GraphQL"><span class="nav-number">2.</span> <span class="nav-text">What is GraphQL?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-are-there-two-languages-in-GraphQL"><span class="nav-number">3.</span> <span class="nav-text">Why are there two languages in GraphQL?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Query-language"><span class="nav-number">3.1.</span> <span class="nav-text">1. Query language</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-schema-definition-language"><span class="nav-number">3.2.</span> <span class="nav-text">2. schema definition language</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-the-graph-in-GraphQL"><span class="nav-number">4.</span> <span class="nav-text">What the graph in GraphQL?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-GraphQL-application"><span class="nav-number">5.</span> <span class="nav-text">A GraphQL application</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Remove-Duplicates-from-Sorted-Array"><span class="nav-number">1.</span> <span class="nav-text">Remove Duplicates from Sorted Array</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Remove-Duplicates-from-Sorted-Array-II"><span class="nav-number">2.</span> <span class="nav-text">Remove Duplicates from Sorted Array II</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Remove-Duplicates-from-Sorted-List"><span class="nav-number">3.</span> <span class="nav-text">Remove Duplicates from Sorted List</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Remove-Duplicates-from-Sorted-List-II"><span class="nav-number">4.</span> <span class="nav-text">Remove Duplicates from Sorted List II</span></a></li></ol></div>
             
 
           </div>
@@ -899,9 +901,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://fuyaoli.me/2019/04/03/graphql-1/';
-          this.page.identifier = '2019/04/03/graphql-1/';
-          this.page.title = 'GraphQL-1 GraphQL Introduction';
+          this.page.url = 'http://fuyaoli.me/2019/05/14/remove-duplicate-from-array-or-linkedlist/';
+          this.page.identifier = '2019/05/14/remove-duplicate-from-array-or-linkedlist/';
+          this.page.title = 'Remove duplicate elements from array or linkedlist';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://fuyaoli-me.disqus.com/embed.js';

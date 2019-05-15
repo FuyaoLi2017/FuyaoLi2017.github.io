@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Remove duplicate elements from array or linkedlist]]></title>
+    <url>%2F2019%2F05%2F14%2Fremove-duplicate-from-array-or-linkedlist%2F</url>
+    <content type="text"><![CDATA[The Key idea of remove duplicate is two pointers. Remove Duplicates from Sorted ArrayGiven a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.12345678910111213class Solution &#123; public int removeDuplicates(int[] nums) &#123; if (nums.length == 0) return 0; int i = 0; for (int j = 1; j &lt; nums.length; j++) &#123; if (nums[j] != nums[i]) &#123; i++; nums[i] = nums[j]; &#125; &#125; return i + 1;&#125;&#125; Remove Duplicates from Sorted Array II use two pointers https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/ 123456789101112131415161718192021222324// my solutionclass Solution &#123; public int removeDuplicates(int[] nums) &#123; if (nums.length &lt;= 2) &#123; return nums.length; &#125; int previous = nums[0]; int currentCount = 1; int end = 1; for (int i = 1; i &lt; nums.length; i++) &#123; if (nums[i] == previous &amp;&amp; currentCount &lt; 2) &#123; currentCount++; nums[end++] = nums[i]; &#125; else if (nums[i] == previous &amp;&amp; currentCount &gt;= 2) &#123; continue; &#125; else &#123; currentCount = 1; nums[end++] = nums[i]; previous = nums[i]; &#125; &#125; return end; &#125;&#125; // a more concise solution// remove duplicates from a sorted array12345678910111213141516public int removeDuplicates(int[] nums) &#123; int i = 0; for(int n : nums) if(i &lt; 1 || n &gt; nums[i - 1]) nums[i++] = n; return i;&#125;// Remove Duplicates from Sorted Array II (allow duplicates up to 2):public int removeDuplicates(int[] nums) &#123; int i = 0; for (int n : nums) if (i &lt; 2 || n &gt; nums[i - 2]) nums[i++] = n; return i;&#125; Remove Duplicates from Sorted List https://leetcode.com/problems/remove-duplicates-from-sorted-list/ Given a sorted linked list, delete all duplicates such that each element appear only once. Example 1: Input: 1-&gt;1-&gt;2Output: 1-&gt;2Example 2: Input: 1-&gt;1-&gt;2-&gt;3-&gt;3Output: 1-&gt;2-&gt;3 1234567891011121314151617181920212223242526272829303132/** * Definition for singly-linked list. * public class ListNode &#123; * int val; * ListNode next; * ListNode(int x) &#123; val = x; &#125; * &#125; */// iterative public ListNode deleteDuplicates(ListNode head) &#123; ListNode list = head; while(list != null) &#123; if (list.next == null) &#123; break; &#125; if (list.val == list.next.val) &#123; list.next = list.next.next; &#125; else &#123; list = list.next; &#125; &#125; return head; &#125;// recursivepublic ListNode deleteDuplicates(ListNode head) &#123; if(head == null || head.next == null)return head; head.next = deleteDuplicates(head.next); return head.val == head.next.val ? head.next : head;&#125; Remove Duplicates from Sorted List II https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/ 123456789101112131415161718192021222324252627282930313233343536/** * Definition for singly-linked list. * public class ListNode &#123; * int val; * ListNode next; * ListNode(int x) &#123; val = x; &#125; * &#125; */ class Solution &#123; public ListNode deleteDuplicates(ListNode head) &#123; if (head == null) return null; ListNode dummy = new ListNode(0); dummy.next = head; ListNode prev = dummy; ListNode cur = head; while (cur != null) &#123; // use a while loop to skip all same values for current while (cur.next != null &amp;&amp; cur.val == cur.next.val) &#123; cur = cur.next; &#125; // there is only one element without duplicate, // the code didn't enter the while loop above // can move pre to pre.next if (prev.next == cur) &#123; prev = prev.next; &#125; // else, point the NEXT!! pointer of pre to cur.next else &#123; prev.next = cur.next; &#125; // advance the cur pointer after each operation cur = cur.next; &#125; return dummy.next; &#125; &#125;]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Computer Science</tag>
+        <tag>algorithm</tag>
+        <tag>array</tag>
+        <tag>linkedlist</tag>
+        <tag>two pointers</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[backtracking]]></title>
     <url>%2F2019%2F05%2F11%2Fbacktracking%2F</url>
     <content type="text"><![CDATA[1. SubsetsGiven a set of distinct integers, nums, return all possible subsets (the power set).Note: The solution set must not contain duplicate subsets. Solution1 use layer by layer DFS 1234567891011121314151617181920class Solution &#123; public List&lt;List&lt;Integer&gt;&gt; subsets(int[] nums) &#123; List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;(); if (nums == null || nums.length == 0) return result; dfs(result, new ArrayList&lt;&gt;(), nums, 0); return result; &#125; public void dfs(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; current, int[] nums, int index) &#123; if (index == nums.length) &#123; result.add(new ArrayList&lt;&gt;(current)); return; &#125; current.add(nums[index]); dfs(result, current, nums, index + 1); current.remove(current.size() - 1); dfs(result, current, nums, index + 1); &#125;&#125; use for loop to traverse in DFS 123456789101112131415public List&lt;List&lt;Integer&gt;&gt; subsets(int[] nums) &#123; List&lt;List&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;(); Arrays.sort(nums); backtrack(list, new ArrayList&lt;&gt;(), nums, 0); return list;&#125;private void backtrack(List&lt;List&lt;Integer&gt;&gt; list , List&lt;Integer&gt; tempList, int [] nums, int start)&#123; list.add(new ArrayList&lt;&gt;(tempList)); for(int i = start; i &lt; nums.length; i++)&#123; tempList.add(nums[i]); backtrack(list, tempList, nums, i + 1); tempList.remove(tempList.size() - 1); &#125;&#125; 2. Subsets23. Combinations https://leetcode.com/problems/combinations/ Given two integers n and k, return all possible combinations of k numbers out of 1 … n.Input: n = 4, k = 2Output:[[2,4],[3,4],[2,3],[1,2],[1,3],[1,4]] a better solution, using the input variable as counter, high vote answer 12345678910111213141516public static List&lt;List&lt;Integer&gt;&gt; combine(int n, int k) &#123; List&lt;List&lt;Integer&gt;&gt; combs = new ArrayList&lt;List&lt;Integer&gt;&gt;(); combine(combs, new ArrayList&lt;Integer&gt;(), 1, n, k); return combs; &#125; public static void combine(List&lt;List&lt;Integer&gt;&gt; combs, List&lt;Integer&gt; comb, int start, int n, int k) &#123; if(k==0) &#123; combs.add(new ArrayList&lt;Integer&gt;(comb)); return; &#125; for(int i=start;i&lt;=n;i++) &#123; comb.add(i); combine(combs, comb, i+1, n, k-1); comb.remove(comb.size()-1); &#125; &#125; My solution, using for loop to DFS 12345678910111213141516171819202122232425class Solution &#123; public List&lt;List&lt;Integer&gt;&gt; combine(int n, int k) &#123; if (n &lt; k || k == 0) &#123; return new ArrayList&lt;&gt;(); &#125; List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;(); dfs(result, new ArrayList&lt;&gt;(), 1, n, k); return result; &#125; private void dfs(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; currentList, int index, int n, int k) &#123; if (currentList.size() == k) &#123; result.add(new ArrayList&lt;&gt;(currentList)); return; &#125; if (index == n+1) &#123; // have reach the end of the array and has not accumlated to k elements return; &#125; for (int i = index; i &lt;= n; i++) &#123; currentList.add(i); dfs(result, currentList, i + 1, n, k); currentList.remove(currentList.size() - 1); &#125; &#125;&#125;]]></content>
@@ -44,8 +59,8 @@
         <category>GraphQL</category>
       </categories>
       <tags>
-        <tag>ardent academy</tag>
         <tag>Computer Science</tag>
+        <tag>ardent academy</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
@@ -57,8 +72,8 @@
         <category>GraphQL</category>
       </categories>
       <tags>
-        <tag>ardent academy</tag>
         <tag>Computer Science</tag>
+        <tag>ardent academy</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
@@ -70,8 +85,8 @@
         <category>GraphQL</category>
       </categories>
       <tags>
-        <tag>ardent academy</tag>
         <tag>Computer Science</tag>
+        <tag>ardent academy</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
@@ -95,8 +110,8 @@
         <category>GraphQL</category>
       </categories>
       <tags>
-        <tag>ardent academy</tag>
         <tag>Computer Science</tag>
+        <tag>ardent academy</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
