@@ -118,7 +118,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="ardent academy,Computer Science,JavaScript,hooks,">
 
 
 
@@ -131,18 +131,18 @@
 
 
 
-<meta name="description" content="Keep coding!">
-<meta name="keywords" content="UC Irvine">
+<meta name="description" content="General Pratice to write a hook Define hooks in the hooks fields(the base methods are inplemented in base classes.) write async functions to update the hooks  Purpose of writing hooks when we define a">
+<meta name="keywords" content="ardent academy,Computer Science,JavaScript,hooks">
 <meta property="og:type" content="article">
 <meta property="og:title" content="how-to-write-hook-based-on-graphql">
 <meta property="og:url" content="http://fuyaoli.me/2019/05/17/how-to-write-hook-based-on-graphql/index.html">
 <meta property="og:site_name" content="Fuyao Li">
-<meta property="og:description" content="Keep coding!">
+<meta property="og:description" content="General Pratice to write a hook Define hooks in the hooks fields(the base methods are inplemented in base classes.) write async functions to update the hooks  Purpose of writing hooks when we define a">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-17T19:35:09.777Z">
+<meta property="og:updated_time" content="2019-05-17T22:43:07.728Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="how-to-write-hook-based-on-graphql">
-<meta name="twitter:description" content="Keep coding!">
+<meta name="twitter:description" content="General Pratice to write a hook Define hooks in the hooks fields(the base methods are inplemented in base classes.) write async functions to update the hooks  Purpose of writing hooks when we define a">
 
 
 
@@ -407,6 +407,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/GraphQL/" itemprop="url" rel="index">
+                    <span itemprop="name">GraphQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -455,7 +477,45 @@
       
 
       
-        
+        <h1 id="General-Pratice-to-write-a-hook"><a href="#General-Pratice-to-write-a-hook" class="headerlink" title="General Pratice to write a hook"></a>General Pratice to write a hook</h1><ol>
+<li>Define hooks in the hooks fields(the base methods are inplemented in base classes.)</li>
+<li>write async functions to update the hooks</li>
+</ol>
+<h1 id="Purpose-of-writing-hooks"><a href="#Purpose-of-writing-hooks" class="headerlink" title="Purpose of writing hooks"></a>Purpose of writing hooks</h1><ol>
+<li>when we define a schema in <code>types</code>, it is not always enough, sometimes we need to automatically increment some values or do somethings after or before we insert some records into the database. With the light weight hooks. We can realize such kind of functionalities.</li>
+</ol>
+<h1 id="Classfication-of-hooks"><a href="#Classfication-of-hooks" class="headerlink" title="Classfication of hooks"></a>Classfication of hooks</h1><ol>
+<li>general types</li>
+</ol>
+<ul>
+<li>create</li>
+<li>update</li>
+<li>archive</li>
+</ul>
+<ol start="2">
+<li>happening time for every general type of hooks</li>
+</ol>
+<ul>
+<li>before</li>
+<li>after</li>
+</ul>
+<h2 id="Example-hook-of-updating"><a href="#Example-hook-of-updating" class="headerlink" title="Example hook of updating"></a>Example hook of updating</h2><h3 id="Step1-declare-a-update-after-hook"><a href="#Step1-declare-a-update-after-hook" class="headerlink" title="Step1: declare a update after hook"></a>Step1: declare a update after hook</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hooks: &#123;</span><br><span class="line">    update: &#123;</span><br><span class="line">      after: updatePostFavorite,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="Step2-write-function-to-implement"><a href="#Step2-write-function-to-implement" class="headerlink" title="Step2: write function to implement"></a>Step2: write function to implement</h3><ul>
+<li><ol>
+<li>In the base class, update hook have three parameters and they matches the three parameters in <code>updatePostFavorite function</code>. Therefore, there is no need to explicitly declare there are three variables in update hook above.</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>use context.dao to update right information</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>Notice that! With the same variable name <code>favoriteCount</code>, it can directly update the field <code>favoriteCount</code> in the post model. This is a feature of JS! I don’t the exact name of the this feature, maybe pass by value.<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">updatePostFavorite</span>(<span class="params">newFavorite, oldFavorite, context</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (newFavorite.favorited === oldFavorite.favorited) &#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> &#123; postFavoriteDAO, postDAO &#125; = context.dao</span><br><span class="line">  <span class="keyword">const</span> post = <span class="keyword">await</span> postDAO.get(newFavorite.postId)</span><br><span class="line">  <span class="keyword">const</span> favoriteCount = post.favoriteCount + newFavorite.favorited ? <span class="number">1</span> : <span class="number">-1</span></span><br><span class="line">  <span class="keyword">await</span> postDAO.update(newFavorite.postId, &#123; favoriteCount &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+
       
     </div>
     
@@ -469,6 +529,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ardent-academy/" rel="tag"># ardent academy</a>
+          
+            <a href="/tags/Computer-Science/" rel="tag"># Computer Science</a>
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/hooks/" rel="tag"># hooks</a>
+          
+        </div>
       
 
       
@@ -553,8 +625,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -593,7 +674,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -651,6 +732,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#General-Pratice-to-write-a-hook"><span class="nav-number">1.</span> <span class="nav-text">General Pratice to write a hook</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Purpose-of-writing-hooks"><span class="nav-number">2.</span> <span class="nav-text">Purpose of writing hooks</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Classfication-of-hooks"><span class="nav-number">3.</span> <span class="nav-text">Classfication of hooks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Example-hook-of-updating"><span class="nav-number">3.1.</span> <span class="nav-text">Example hook of updating</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Step1-declare-a-update-after-hook"><span class="nav-number">3.1.1.</span> <span class="nav-text">Step1: declare a update after hook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step2-write-function-to-implement"><span class="nav-number">3.1.2.</span> <span class="nav-text">Step2: write function to implement</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

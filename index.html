@@ -527,7 +527,7 @@
 </li>
 </ul>
 <ol start="3">
-<li><code>[]</code> is destructing an array, this let you to separate variables.<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [a, b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"> <span class="comment">// then, the value of a, b, c will be</span></span><br><span class="line"> a = <span class="number">1</span></span><br><span class="line"> b = <span class="number">2</span></span><br><span class="line"> c = <span class="number">3</span></span><br><span class="line"> <span class="comment">// if you don't want all parameters</span></span><br><span class="line"> <span class="keyword">const</span> [a, b] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"> a = <span class="number">1</span></span><br><span class="line"> b = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<li><code>[]</code> is used destructure an array, this let you to separate variables.<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [a, b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"> <span class="comment">// then, the value of a, b, c will be</span></span><br><span class="line"> a = <span class="number">1</span></span><br><span class="line"> b = <span class="number">2</span></span><br><span class="line"> c = <span class="number">3</span></span><br><span class="line"> <span class="comment">// if you don't want all parameters</span></span><br><span class="line"> <span class="keyword">const</span> [a, b] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"> a = <span class="number">1</span></span><br><span class="line"> b = <span class="number">2</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>Also, you can use <code>...</code> to hold the rest of variables in an array. <a href="https://dev.to/sagar/three-dots---in-javascript-26ci" target="_blank" rel="noopener">https://dev.to/sagar/three-dots---in-javascript-26ci</a></p>
@@ -669,6 +669,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/GraphQL/" itemprop="url" rel="index">
+                    <span itemprop="name">GraphQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -719,7 +741,45 @@
       
         
           
-            
+            <h1 id="General-Pratice-to-write-a-hook"><a href="#General-Pratice-to-write-a-hook" class="headerlink" title="General Pratice to write a hook"></a>General Pratice to write a hook</h1><ol>
+<li>Define hooks in the hooks fields(the base methods are inplemented in base classes.)</li>
+<li>write async functions to update the hooks</li>
+</ol>
+<h1 id="Purpose-of-writing-hooks"><a href="#Purpose-of-writing-hooks" class="headerlink" title="Purpose of writing hooks"></a>Purpose of writing hooks</h1><ol>
+<li>when we define a schema in <code>types</code>, it is not always enough, sometimes we need to automatically increment some values or do somethings after or before we insert some records into the database. With the light weight hooks. We can realize such kind of functionalities.</li>
+</ol>
+<h1 id="Classfication-of-hooks"><a href="#Classfication-of-hooks" class="headerlink" title="Classfication of hooks"></a>Classfication of hooks</h1><ol>
+<li>general types</li>
+</ol>
+<ul>
+<li>create</li>
+<li>update</li>
+<li>archive</li>
+</ul>
+<ol start="2">
+<li>happening time for every general type of hooks</li>
+</ol>
+<ul>
+<li>before</li>
+<li>after</li>
+</ul>
+<h2 id="Example-hook-of-updating"><a href="#Example-hook-of-updating" class="headerlink" title="Example hook of updating"></a>Example hook of updating</h2><h3 id="Step1-declare-a-update-after-hook"><a href="#Step1-declare-a-update-after-hook" class="headerlink" title="Step1: declare a update after hook"></a>Step1: declare a update after hook</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hooks: &#123;</span><br><span class="line">    update: &#123;</span><br><span class="line">      after: updatePostFavorite,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="Step2-write-function-to-implement"><a href="#Step2-write-function-to-implement" class="headerlink" title="Step2: write function to implement"></a>Step2: write function to implement</h3><ul>
+<li><ol>
+<li>In the base class, update hook have three parameters and they matches the three parameters in <code>updatePostFavorite function</code>. Therefore, there is no need to explicitly declare there are three variables in update hook above.</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>use context.dao to update right information</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>Notice that! With the same variable name <code>favoriteCount</code>, it can directly update the field <code>favoriteCount</code> in the post model. This is a feature of JS! I don’t the exact name of the this feature, maybe pass by value.<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">updatePostFavorite</span>(<span class="params">newFavorite, oldFavorite, context</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (newFavorite.favorited === oldFavorite.favorited) &#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> &#123; postFavoriteDAO, postDAO &#125; = context.dao</span><br><span class="line">  <span class="keyword">const</span> post = <span class="keyword">await</span> postDAO.get(newFavorite.postId)</span><br><span class="line">  <span class="keyword">const</span> favoriteCount = post.favoriteCount + newFavorite.favorited ? <span class="number">1</span> : <span class="number">-1</span></span><br><span class="line">  <span class="keyword">await</span> postDAO.update(newFavorite.postId, &#123; favoriteCount &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+
           
         
       
@@ -2404,7 +2464,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

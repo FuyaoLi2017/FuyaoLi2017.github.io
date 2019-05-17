@@ -66,29 +66,36 @@
     </url>
 
     <url>
+        <loc>http://fuyaoli.me/tags/mutation/</loc>
+        <lastmod>2019-05-17T22:22:10.098Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://fuyaoli.me/tags/ardent-academy/</loc>
-        <lastmod>2019-05-17T22:19:58.545Z</lastmod>
+        <lastmod>2019-05-17T22:43:07.728Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://fuyaoli.me/tags/Computer-Science/</loc>
-        <lastmod>2019-05-17T22:19:58.545Z</lastmod>
+        <lastmod>2019-05-17T22:43:07.728Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://fuyaoli.me/tags/JavaScript/</loc>
-        <lastmod>2019-05-17T22:19:58.545Z</lastmod>
+        <lastmod>2019-05-17T22:43:07.728Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://fuyaoli.me/tags/mutation/</loc>
-        <lastmod>2019-05-17T22:19:58.545Z</lastmod>
+        <loc>http://fuyaoli.me/tags/hooks/</loc>
+        <lastmod>2019-05-17T22:43:07.728Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
