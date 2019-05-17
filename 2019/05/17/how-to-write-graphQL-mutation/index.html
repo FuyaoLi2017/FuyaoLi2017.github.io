@@ -118,7 +118,7 @@
 
 
 
-  <meta name="keywords" content="Computer Science,algorithm,array,linkedlist,two pointers,">
+  <meta name="keywords" content="ardent academy,Computer Science,JavaScript,mutation,">
 
 
 
@@ -131,18 +131,18 @@
 
 
 
-<meta name="description" content="The Key idea of remove duplicate is two pointers. 1. Remove Duplicates from Sorted Array https://leetcode.com/problems/remove-duplicates-from-sorted-array/  Given a sorted array nums, remove the dupli">
-<meta name="keywords" content="Computer Science,algorithm,array,linkedlist,two pointers">
+<meta name="description" content="Basic steps of building a mutation in graphQL define the return value strcture.(useful error message report and status feedback). Define the mutation resolve function Define the input parameters and o">
+<meta name="keywords" content="ardent academy,Computer Science,JavaScript,mutation">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Remove duplicate elements from array or linkedlist">
-<meta property="og:url" content="http://fuyaoli.me/2019/05/14/remove-duplicate-from-array-or-linkedlist/index.html">
+<meta property="og:title" content="How to write standard GraphQL mutations">
+<meta property="og:url" content="http://fuyaoli.me/2019/05/17/how-to-write-graphQL-mutation/index.html">
 <meta property="og:site_name" content="Fuyao Li">
-<meta property="og:description" content="The Key idea of remove duplicate is two pointers. 1. Remove Duplicates from Sorted Array https://leetcode.com/problems/remove-duplicates-from-sorted-array/  Given a sorted array nums, remove the dupli">
+<meta property="og:description" content="Basic steps of building a mutation in graphQL define the return value strcture.(useful error message report and status feedback). Define the mutation resolve function Define the input parameters and o">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-15T05:49:40.939Z">
+<meta property="og:updated_time" content="2019-05-17T22:19:58.545Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Remove duplicate elements from array or linkedlist">
-<meta name="twitter:description" content="The Key idea of remove duplicate is two pointers. 1. Remove Duplicates from Sorted Array https://leetcode.com/problems/remove-duplicates-from-sorted-array/  Given a sorted array nums, remove the dupli">
+<meta name="twitter:title" content="How to write standard GraphQL mutations">
+<meta name="twitter:description" content="Basic steps of building a mutation in graphQL define the return value strcture.(useful error message report and status feedback). Define the mutation resolve function Define the input parameters and o">
 
 
 
@@ -172,13 +172,13 @@
 
 
 
-  <link rel="canonical" href="http://fuyaoli.me/2019/05/14/remove-duplicate-from-array-or-linkedlist/">
+  <link rel="canonical" href="http://fuyaoli.me/2019/05/17/how-to-write-graphQL-mutation/">
 
 
 
 
 
-  <title>Remove duplicate elements from array or linkedlist | Fuyao Li</title>
+  <title>How to write standard GraphQL mutations | Fuyao Li</title>
   
 
 
@@ -367,7 +367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://fuyaoli.me/2019/05/14/remove-duplicate-from-array-or-linkedlist/">
+    <link itemprop="mainEntityOfPage" href="http://fuyaoli.me/2019/05/17/how-to-write-graphQL-mutation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fuyao Li">
@@ -384,7 +384,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Remove duplicate elements from array or linkedlist</h1>
+          <h1 class="post-title" itemprop="name headline">How to write standard GraphQL mutations</h1>
         
 
         <div class="post-meta">
@@ -396,8 +396,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-14T21:59:46-07:00">
-                2019-05-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-17T15:10:18-07:00">
+                2019-05-17
               </time>
             
 
@@ -419,8 +419,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">Leetcode</span>
+                  <a href="/categories/GraphQL/" itemprop="url" rel="index">
+                    <span itemprop="name">GraphQL</span>
                   </a>
                 </span>
 
@@ -437,8 +437,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/05/14/remove-duplicate-from-array-or-linkedlist/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/14/remove-duplicate-from-array-or-linkedlist/" itemprop="commentCount"></span>
+                <a href="/2019/05/17/how-to-write-graphQL-mutation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/17/how-to-write-graphQL-mutation/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -446,7 +446,7 @@
 
           
           
-             <span id="/2019/05/14/remove-duplicate-from-array-or-linkedlist/" class="leancloud_visitors" data-flag-title="Remove duplicate elements from array or linkedlist">
+             <span id="/2019/05/17/how-to-write-graphQL-mutation/" class="leancloud_visitors" data-flag-title="How to write standard GraphQL mutations">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -477,28 +477,104 @@
       
 
       
-        <p>The Key idea of remove duplicate is two pointers.</p>
-<h1 id="1-Remove-Duplicates-from-Sorted-Array"><a href="#1-Remove-Duplicates-from-Sorted-Array" class="headerlink" title="1. Remove Duplicates from Sorted Array"></a>1. Remove Duplicates from Sorted Array</h1><blockquote>
-<p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="noopener">https://leetcode.com/problems/remove-duplicates-from-sorted-array/</a></p>
-</blockquote>
-<p>Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.<br>Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[j] != nums[i]) &#123;</span><br><span class="line">            i++;</span><br><span class="line">            nums[i] = nums[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="2-Remove-Duplicates-from-Sorted-Array-II"><a href="#2-Remove-Duplicates-from-Sorted-Array-II" class="headerlink" title="2. Remove Duplicates from Sorted Array II"></a>2. Remove Duplicates from Sorted Array II</h1><blockquote>
-<p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/" target="_blank" rel="noopener">https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/</a></p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// my solution</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length &lt;= <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> nums.length;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> previous = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> currentCount = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> end = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == previous &amp;&amp; currentCount &lt; <span class="number">2</span>) &#123;</span><br><span class="line">                currentCount++;</span><br><span class="line">                nums[end++] = nums[i];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[i] == previous &amp;&amp; currentCount &gt;= <span class="number">2</span>) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                currentCount = <span class="number">1</span>;</span><br><span class="line">                nums[end++] = nums[i];</span><br><span class="line">                previous = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> end;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>// a more concise solution<br>// remove duplicates from a sorted array<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> n : nums)</span><br><span class="line">        <span class="keyword">if</span>(i &lt; <span class="number">1</span> || n &gt; nums[i - <span class="number">1</span>])</span><br><span class="line">            nums[i++] = n;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Remove Duplicates from Sorted Array II (allow duplicates up to 2):</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> n : nums)</span><br><span class="line">      <span class="keyword">if</span> (i &lt; <span class="number">2</span> || n &gt; nums[i - <span class="number">2</span>])</span><br><span class="line">         nums[i++] = n;</span><br><span class="line">   <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="3-Remove-Duplicates-from-Sorted-List"><a href="#3-Remove-Duplicates-from-Sorted-List" class="headerlink" title="3. Remove Duplicates from Sorted List"></a>3. Remove Duplicates from Sorted List</h1><blockquote>
-<p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/" target="_blank" rel="noopener">https://leetcode.com/problems/remove-duplicates-from-sorted-list/</a></p>
-</blockquote>
-<p>Given a sorted linked list, delete all duplicates such that each element appear only once.</p>
-<p>Example 1:</p>
-<p>Input: 1-&gt;1-&gt;2<br>Output: 1-&gt;2<br>Example 2:</p>
-<p>Input: 1-&gt;1-&gt;2-&gt;3-&gt;3<br>Output: 1-&gt;2-&gt;3</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// iterative</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode list = head;</span><br><span class="line"></span><br><span class="line">         <span class="keyword">while</span>(list != <span class="keyword">null</span>) &#123;</span><br><span class="line">        	 <span class="keyword">if</span> (list.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        		 <span class="keyword">break</span>;</span><br><span class="line">        	 &#125;</span><br><span class="line">        	 <span class="keyword">if</span> (list.val == list.next.val) &#123;</span><br><span class="line">        		 list.next = list.next.next;</span><br><span class="line">        	 &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        		 list = list.next;</span><br><span class="line">        	 &#125;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// recursive</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>)<span class="keyword">return</span> head;</span><br><span class="line">        head.next = deleteDuplicates(head.next);</span><br><span class="line">        <span class="keyword">return</span> head.val == head.next.val ? head.next : head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="4-Remove-Duplicates-from-Sorted-List-II"><a href="#4-Remove-Duplicates-from-Sorted-List-II" class="headerlink" title="4. Remove Duplicates from Sorted List II"></a>4. Remove Duplicates from Sorted List II</h1><blockquote>
-<p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/" target="_blank" rel="noopener">https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/</a></p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">if</span> (head == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">         ListNode dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">         dummy.next = head;</span><br><span class="line">         ListNode prev = dummy;</span><br><span class="line">         ListNode cur = head;</span><br><span class="line">         <span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;</span><br><span class="line">             <span class="comment">// use a while loop to skip all same values for current</span></span><br><span class="line">             <span class="keyword">while</span> (cur.next != <span class="keyword">null</span> &amp;&amp; cur.val == cur.next.val) &#123;</span><br><span class="line">                 cur = cur.next;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="comment">// there is only one element without duplicate,</span></span><br><span class="line">             <span class="comment">// the code didn't enter the while loop above</span></span><br><span class="line">             <span class="comment">// can move pre to pre.next</span></span><br><span class="line">             <span class="keyword">if</span> (prev.next == cur) &#123;</span><br><span class="line">                 prev = prev.next;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="comment">// else, point the NEXT!! pointer of pre to cur.next</span></span><br><span class="line">             <span class="keyword">else</span> &#123;</span><br><span class="line">                 prev.next = cur.next;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="comment">// advance the cur pointer after each operation</span></span><br><span class="line">             cur = cur.next;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> dummy.next;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="Basic-steps-of-building-a-mutation-in-graphQL"><a href="#Basic-steps-of-building-a-mutation-in-graphQL" class="headerlink" title="Basic steps of building a mutation in graphQL"></a>Basic steps of building a mutation in graphQL</h1><ol>
+<li>define the return value strcture.(useful error message report and status feedback).</li>
+<li>Define the mutation resolve function</li>
+<li>Define the input parameters and output parameters of the mutation.</li>
+<li>export the queries and mutations in this file and register it in <code>index.js</code></li>
+</ol>
+<h1 id="An-example-of-writing-a-mutation"><a href="#An-example-of-writing-a-mutation" class="headerlink" title="An example of writing a mutation"></a>An example of writing a mutation</h1><ul>
+<li>More detailed source code can be referred right here(Private Repo). The code here is modified to avoid showing the business logic.<br><a href="https://github.com/FuyaoLi2017/JavaScript-Learning/blob/master/building-mutation-in-graphql.md" target="_blank" rel="noopener">https://github.com/FuyaoLi2017/JavaScript-Learning/blob/master/building-mutation-in-graphql.md</a></li>
+</ul>
+<h2 id="1-Step1-Define-the-return-value"><a href="#1-Step1-Define-the-return-value" class="headerlink" title="1. Step1: Define the return value"></a>1. Step1: Define the return value</h2><ul>
+<li>I have changed the code to blur the original business logic. Main idea is to show the syntax. This is suppose to support a service to update all student grade according to centain rules.</li>
+<li><ol>
+<li>comma(<code>,</code>) is used to separate different properties within an object, normal JS sentences are separated by line feed, or semi colon<code>;</code>.</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>You need to import corresponding graphQL type if that thing exists in your code.</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>When we try to create the return data structure, we need to give feedback information as much as possible to help the frontend to locate the problem. Giving fields like <code>success</code>, <code>warning</code>,<code>message</code>, <code>useful wrong output lists</code> are helpful.</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>Pay attention to the indentation of the <code>oneLine</code> thing. Just one TAB behind curly braces!</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; oneLine &#125; <span class="keyword">from</span> <span class="string">'common-tags'</span></span><br><span class="line"><span class="keyword">import</span> &#123; r &#125; <span class="keyword">from</span> <span class="string">'../../services/thinky'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  GraphQLObjectType,</span><br><span class="line">  GraphQLNonNull,</span><br><span class="line">  GraphQLBoolean,</span><br><span class="line">  GraphQLString,</span><br><span class="line">  GraphQLList,</span><br><span class="line">  GraphQLID,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'../scalars'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> SubField = <span class="keyword">new</span> GraphQLObjectType(&#123;</span><br><span class="line">  name: <span class="string">'subField'</span>,</span><br><span class="line">  fields: <span class="function"><span class="params">()</span> =&gt;</span> (&#123;</span><br><span class="line">    studentID: &#123;</span><br><span class="line">      type: <span class="keyword">new</span> GraphQLNonNull(GraphQLID),</span><br><span class="line">      description: oneLine<span class="string">`</span></span><br><span class="line"><span class="string">        XXX</span></span><br><span class="line"><span class="string">      `</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    failedReason: &#123;</span><br><span class="line">      type: <span class="keyword">new</span> GraphQLNonNull(GraphQLString),</span><br><span class="line">      description: <span class="string">'XXX'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;),</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Result = <span class="keyword">new</span> GraphQLObjectType(&#123;</span><br><span class="line">  name: <span class="string">'Result'</span>,</span><br><span class="line">  fields: <span class="function"><span class="params">()</span> =&gt;</span> (&#123;</span><br><span class="line">    success: &#123;</span><br><span class="line">      type: <span class="keyword">new</span> GraphQLNonNull(GraphQLBoolean),</span><br><span class="line">    &#125;,</span><br><span class="line">    warning: &#123;</span><br><span class="line">      type: <span class="keyword">new</span> GraphQLNonNull(GraphQLBoolean),</span><br><span class="line">    &#125;,</span><br><span class="line">    message: &#123;</span><br><span class="line">      type: <span class="keyword">new</span> GraphQLNonNull(GraphQLString),</span><br><span class="line">      description: oneLine<span class="string">`</span></span><br><span class="line"><span class="string">        XXX</span></span><br><span class="line"><span class="string">      `</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    failedStudentsList: &#123;</span><br><span class="line">      type: <span class="keyword">new</span> GraphQLList(SubField),</span><br><span class="line">      description: oneLine<span class="string">`</span></span><br><span class="line"><span class="string">        XXX</span></span><br><span class="line"><span class="string">      `</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;),</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="Step2-Use-async-function-to-update-the-information-in-the-database"><a href="#Step2-Use-async-function-to-update-the-information-in-the-database" class="headerlink" title="Step2: Use async function to update the information in the database"></a>Step2: Use async function to update the information in the database</h2><ul>
+<li><ol>
+<li>If we fetch something, even if it don’t have any return sentence, it won’t be null. The length will be 0, We should check <code>student.length == 0</code> instead of <code>!student</code>.</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>Different between <code>for ___ of ___</code> and <code>for ___ in ___</code></li>
+</ol>
+<ul>
+<li><code>for ... in ...</code> iterate over the keys of the objects. For array, it should be the index, 0,1,2,3…</li>
+<li><code>for ... of ...</code> iterate the values of the objects directly.</li>
+<li>so the following codes are the same<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (a <span class="keyword">in</span> stuff) &#123;</span><br><span class="line">  value = stuff[a]</span><br><span class="line">  <span class="built_in">console</span>.log(value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (value <span class="keyword">of</span> stuff) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li><code>[]</code> is destructing an array, this let you to separate variables.<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [a, b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"> <span class="comment">// then, the value of a, b, c will be</span></span><br><span class="line"> a = <span class="number">1</span></span><br><span class="line"> b = <span class="number">2</span></span><br><span class="line"> c = <span class="number">3</span></span><br><span class="line"> <span class="comment">// if you don't want all parameters</span></span><br><span class="line"> <span class="keyword">const</span> [a, b] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"> a = <span class="number">1</span></span><br><span class="line"> b = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Also, you can use <code>...</code> to hold the rest of variables in an array. <a href="https://dev.to/sagar/three-dots---in-javascript-26ci" target="_blank" rel="noopener">https://dev.to/sagar/three-dots---in-javascript-26ci</a></p>
+<ul>
+<li><ol start="4">
+<li>Several ways to append elements at the end of the array<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">arr = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>]</span><br><span class="line"><span class="comment">// (1)using push</span></span><br><span class="line">arr.push(<span class="string">"d"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// (2) using concat</span></span><br><span class="line">arr.concat([<span class="string">"d"</span>, <span class="string">"e"</span>, <span class="string">"f"</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">// (3) using the length</span></span><br><span class="line">arr.[arr.length] = <span class="string">"d"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>In the naming convention the GraphQL type, the first letter should be capitalized.</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>For <code>await</code> function, we don’t need to handle the exceptions, it will handle itself in our base classes.</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>Some fields of a certain graphQL type is not contained in its <code>DAO</code>, it is connected by its ID. We should use other <code>DAO</code> to fetch the things we want. Just check the rethinkdb database when the graphQL schema is not so clear. Database will have all fields we are looking for.</li>
+</ol>
+</li>
+<li><ol start="8">
+<li>Backtick usage<br>When we need to <code>console.log()</code> something, <code>quote mark</code> will work, but we can add any other extra variables.<br>with backtick, we can add extra variables. Also, <code>oneLine</code> node module can used right here to format the back tick surrounded strings.<br><a href="https://stackoverflow.com/questions/27678052/usage-of-the-backtick-character-in-javascript" target="_blank" rel="noopener">https://stackoverflow.com/questions/27678052/usage-of-the-backtick-character-in-javascript</a></li>
+</ol>
+</li>
+<li><ol start="9">
+<li>different between <code>undefined</code> and <code>null</code>.<br><code>undefined</code> means the object don’t have such a field.<br><code>null</code> means the object has such field but it is null, if you add 1 to <code>null</code>, it will become <code>1</code>. Super weird!!!</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// example</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`a is: <span class="subst">$&#123;a&#125;</span>`</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`PI is nearly <span class="subst">$&#123;<span class="built_in">Math</span>.max(a, b)&#125;</span>`</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> updateGradeLevelResolve = <span class="keyword">async</span> context =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; studentDAO, familyAccountDAO &#125; = context.dao</span><br><span class="line">  <span class="keyword">const</span> students = <span class="keyword">await</span> studentDAO.fetch()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (students.length == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      success: <span class="literal">false</span>,</span><br><span class="line">      message: <span class="string">'xxx'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/*MAIN BUSINESS LOGIC*/</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> message = <span class="string">'Finish updating all students grade.'</span></span><br><span class="line">  <span class="keyword">let</span> warning = <span class="literal">false</span></span><br><span class="line">  <span class="keyword">if</span> (failedStudentsList.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    message = oneLine<span class="string">`</span></span><br><span class="line"><span class="string">      Finished updating student grades, but couldn't update some.</span></span><br><span class="line"><span class="string">      See the failedStudentsList for more information.</span></span><br><span class="line"><span class="string">    `</span></span><br><span class="line">    warning = <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    success: <span class="literal">true</span>,</span><br><span class="line">    warning,</span><br><span class="line">    message,</span><br><span class="line">    failedStudentsList,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Step3-resolve-the-mutation"><a href="#Step3-resolve-the-mutation" class="headerlink" title="Step3: resolve the mutation"></a>Step3: resolve the mutation</h2><ul>
+<li><ol>
+<li>In this example, there is no input arguments. If there is, we should define and pass <code>args</code> in the resolve function.<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> updateGradeLevel = &#123;</span><br><span class="line">  type: UpdateGradeLevelResult,</span><br><span class="line">  description: oneLine<span class="string">`</span></span><br><span class="line"><span class="string">    This mutation will run once a year in June before summer camp starts.</span></span><br><span class="line"><span class="string">    All student grade level will advance one year.</span></span><br><span class="line"><span class="string">    If the grade level is between 0 - 11, add 1 to the grade level.</span></span><br><span class="line"><span class="string">    If the grade level is 12, this mutation will add 1 to the grade level and</span></span><br><span class="line"><span class="string">    change EnrollmentStatus to GRADUATED.</span></span><br><span class="line"><span class="string">    If the family has another students under grade 12. the mutation will do nothing.</span></span><br><span class="line"><span class="string">    Otherwise, change student.familyAccount.status to CLOSED.</span></span><br><span class="line"><span class="string">  `</span>,</span><br><span class="line">  resolve(obj, args, context) &#123;</span><br><span class="line">    <span class="keyword">return</span> updateGradeLevelResolve(context)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="Step4-export-the-mutations-and-queries"><a href="#Step4-export-the-mutations-and-queries" class="headerlink" title="Step4 export the mutations and queries"></a>Step4 export the mutations and queries</h2><ul>
+<li><ol>
+<li>export in the local file.<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> queries = &#123;&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> mutations = &#123; updateGradeLevel &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>import and export in the <code>index.js</code> file to expose a more standard naming of the files.<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  queries <span class="keyword">as</span> updateGradeLevelQs,</span><br><span class="line">  mutations <span class="keyword">as</span> updateGradeLevelMs,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'./updateGradeLevel'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> queries = &#123;</span><br><span class="line">  ...updateGradeLevelQs,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> mutations = &#123;</span><br><span class="line">  ...updateGradeLevelMs,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
 
       
     </div>
@@ -516,15 +592,13 @@
       
         <div class="post-tags">
           
+            <a href="/tags/ardent-academy/" rel="tag"># ardent academy</a>
+          
             <a href="/tags/Computer-Science/" rel="tag"># Computer Science</a>
           
-            <a href="/tags/algorithm/" rel="tag"># algorithm</a>
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
           
-            <a href="/tags/array/" rel="tag"># array</a>
-          
-            <a href="/tags/linkedlist/" rel="tag"># linkedlist</a>
-          
-            <a href="/tags/two-pointers/" rel="tag"># two pointers</a>
+            <a href="/tags/mutation/" rel="tag"># mutation</a>
           
         </div>
       
@@ -537,8 +611,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/11/backtracking/" rel="next" title="backtracking">
-                <i class="fa fa-chevron-left"></i> backtracking
+              <a href="/2019/05/17/how-to-write-hook-based-on-graphql/" rel="next" title="how-to-write-hook-based-on-graphql">
+                <i class="fa fa-chevron-left"></i> how-to-write-hook-based-on-graphql
               </a>
             
           </div>
@@ -546,10 +620,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/17/how-to-write-hook-based-on-graphql/" rel="prev" title="how-to-write-hook-based-on-graphql">
-                how-to-write-hook-based-on-graphql <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -728,7 +798,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Remove-Duplicates-from-Sorted-Array"><span class="nav-number">1.</span> <span class="nav-text">1. Remove Duplicates from Sorted Array</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Remove-Duplicates-from-Sorted-Array-II"><span class="nav-number">2.</span> <span class="nav-text">2. Remove Duplicates from Sorted Array II</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Remove-Duplicates-from-Sorted-List"><span class="nav-number">3.</span> <span class="nav-text">3. Remove Duplicates from Sorted List</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Remove-Duplicates-from-Sorted-List-II"><span class="nav-number">4.</span> <span class="nav-text">4. Remove Duplicates from Sorted List II</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Basic-steps-of-building-a-mutation-in-graphQL"><span class="nav-number">1.</span> <span class="nav-text">Basic steps of building a mutation in graphQL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#An-example-of-writing-a-mutation"><span class="nav-number">2.</span> <span class="nav-text">An example of writing a mutation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Step1-Define-the-return-value"><span class="nav-number">2.1.</span> <span class="nav-text">1. Step1: Define the return value</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step2-Use-async-function-to-update-the-information-in-the-database"><span class="nav-number">2.2.</span> <span class="nav-text">Step2: Use async function to update the information in the database</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step3-resolve-the-mutation"><span class="nav-number">2.3.</span> <span class="nav-text">Step3: resolve the mutation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step4-export-the-mutations-and-queries"><span class="nav-number">2.4.</span> <span class="nav-text">Step4 export the mutations and queries</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -905,9 +975,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://fuyaoli.me/2019/05/14/remove-duplicate-from-array-or-linkedlist/';
-          this.page.identifier = '2019/05/14/remove-duplicate-from-array-or-linkedlist/';
-          this.page.title = 'Remove duplicate elements from array or linkedlist';
+          this.page.url = 'http://fuyaoli.me/2019/05/17/how-to-write-graphQL-mutation/';
+          this.page.identifier = '2019/05/17/how-to-write-graphQL-mutation/';
+          this.page.title = 'How to write standard GraphQL mutations';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://fuyaoli-me.disqus.com/embed.js';
