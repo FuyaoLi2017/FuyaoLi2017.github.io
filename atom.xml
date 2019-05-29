@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fuyaoli.me/"/>
-  <updated>2019-05-17T22:22:10.098Z</updated>
+  <updated>2019-05-29T18:46:34.864Z</updated>
   <id>http://fuyaoli.me/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to Override DAO Create and Update using flow</title>
+    <link href="http://fuyaoli.me/2019/05/29/override-DAO/"/>
+    <id>http://fuyaoli.me/2019/05/29/override-DAO/</id>
+    <published>2019-05-29T18:45:06.000Z</published>
+    <updated>2019-05-29T18:46:34.864Z</updated>
+    
+    <content type="html"><![CDATA[<p>Today I meet a task, which requires me to migrate some hooks to DAO. In DAO itself, some operations are different. I also have a deeper understanding of the three dot sign in JavaScript.</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassroomDAO</span> <span class="keyword">extends</span> <span class="title">DAO</span>&lt;<span class="title">Classroom</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(context) &#123;</span><br><span class="line">    <span class="keyword">super</span>(<span class="string">'Classroom'</span>, context)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">async</span> create(input: Classroom) &#123;</span><br><span class="line">    <span class="keyword">const</span> checkedClassroom = checkValidDays(input)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.create(checkedClassroom)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">async</span> update(id: string, <span class="attr">input</span>: $Shape&lt;Classroom&gt;) &#123;</span><br><span class="line">    <span class="keyword">const</span> classroom = <span class="keyword">await</span> <span class="keyword">super</span>.get(id) <span class="comment">// directly use get</span></span><br><span class="line">    checkValidDays(&#123; ...classroom, ...input &#125;)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.update(id, input)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>The Code above is the the way to override ClassroomDAO functions. Defining functions with the same name from the DAO it extends will override it’s previous function.</li><li><code>$Shape&lt;Classroom&gt;</code> is a syntax used in Flow. It can hold part of the fields in a Model object. Even if a fields is required, it can still choose not to hold it. <a href="https://medium.com/netscape/secret-flow-types-86b2ebb30951" target="_blank" rel="noopener">https://medium.com/netscape/secret-flow-types-86b2ebb30951</a></li><li><code>checkValidDays({ ...classroom, ...input })</code> For this part, use three dot to destructure the <code>classroom</code> thing fetched(the whole object) and use the new fields in <code>input</code> to override part of the fields in <code>classroom</code>. In this way, <code>checkValidDays</code> function will check the expected updated result of the new classroom thing, though it is a temporary variable. The final update will be done in <code>return super.update(id, input)</code>. <code>checkValidDays</code> will mainly check whether the input <code>classroom</code> is valid or not, if not, it will throw an error. Otherwise, it won’t do anything.</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Today I meet a task, which requires me to migrate some hooks to DAO. In DAO itself, some operations are different. I also have a deeper u
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://fuyaoli.me/categories/JavaScript/"/>
+    
+    
+      <category term="ardent academy" scheme="http://fuyaoli.me/tags/ardent-academy/"/>
+    
+      <category term="Computer Science" scheme="http://fuyaoli.me/tags/Computer-Science/"/>
+    
+      <category term="JavaScript" scheme="http://fuyaoli.me/tags/JavaScript/"/>
+    
+      <category term="flow" scheme="http://fuyaoli.me/tags/flow/"/>
+    
+  </entry>
   
   <entry>
     <title>How to write standard GraphQL mutations</title>
@@ -37,9 +68,9 @@
       <category term="GraphQL" scheme="http://fuyaoli.me/categories/GraphQL/"/>
     
     
-      <category term="Computer Science" scheme="http://fuyaoli.me/tags/Computer-Science/"/>
-    
       <category term="ardent academy" scheme="http://fuyaoli.me/tags/ardent-academy/"/>
+    
+      <category term="Computer Science" scheme="http://fuyaoli.me/tags/Computer-Science/"/>
     
       <category term="JavaScript" scheme="http://fuyaoli.me/tags/JavaScript/"/>
     
@@ -68,9 +99,9 @@
       <category term="GraphQL" scheme="http://fuyaoli.me/categories/GraphQL/"/>
     
     
-      <category term="Computer Science" scheme="http://fuyaoli.me/tags/Computer-Science/"/>
-    
       <category term="ardent academy" scheme="http://fuyaoli.me/tags/ardent-academy/"/>
+    
+      <category term="Computer Science" scheme="http://fuyaoli.me/tags/Computer-Science/"/>
     
       <category term="JavaScript" scheme="http://fuyaoli.me/tags/JavaScript/"/>
     
@@ -215,9 +246,9 @@
       <category term="GraphQL" scheme="http://fuyaoli.me/categories/GraphQL/"/>
     
     
-      <category term="Computer Science" scheme="http://fuyaoli.me/tags/Computer-Science/"/>
-    
       <category term="ardent academy" scheme="http://fuyaoli.me/tags/ardent-academy/"/>
+    
+      <category term="Computer Science" scheme="http://fuyaoli.me/tags/Computer-Science/"/>
     
       <category term="JavaScript" scheme="http://fuyaoli.me/tags/JavaScript/"/>
     
@@ -244,9 +275,9 @@
       <category term="GraphQL" scheme="http://fuyaoli.me/categories/GraphQL/"/>
     
     
-      <category term="Computer Science" scheme="http://fuyaoli.me/tags/Computer-Science/"/>
-    
       <category term="ardent academy" scheme="http://fuyaoli.me/tags/ardent-academy/"/>
+    
+      <category term="Computer Science" scheme="http://fuyaoli.me/tags/Computer-Science/"/>
     
       <category term="JavaScript" scheme="http://fuyaoli.me/tags/JavaScript/"/>
     
@@ -273,9 +304,9 @@
       <category term="GraphQL" scheme="http://fuyaoli.me/categories/GraphQL/"/>
     
     
-      <category term="Computer Science" scheme="http://fuyaoli.me/tags/Computer-Science/"/>
-    
       <category term="ardent academy" scheme="http://fuyaoli.me/tags/ardent-academy/"/>
+    
+      <category term="Computer Science" scheme="http://fuyaoli.me/tags/Computer-Science/"/>
     
       <category term="JavaScript" scheme="http://fuyaoli.me/tags/JavaScript/"/>
     
@@ -332,9 +363,9 @@
       <category term="GraphQL" scheme="http://fuyaoli.me/categories/GraphQL/"/>
     
     
-      <category term="Computer Science" scheme="http://fuyaoli.me/tags/Computer-Science/"/>
-    
       <category term="ardent academy" scheme="http://fuyaoli.me/tags/ardent-academy/"/>
+    
+      <category term="Computer Science" scheme="http://fuyaoli.me/tags/Computer-Science/"/>
     
       <category term="JavaScript" scheme="http://fuyaoli.me/tags/JavaScript/"/>
     
@@ -390,9 +421,9 @@
       <category term="website" scheme="http://fuyaoli.me/categories/website/"/>
     
     
-      <category term="Computer Science" scheme="http://fuyaoli.me/tags/Computer-Science/"/>
-    
       <category term="blog" scheme="http://fuyaoli.me/tags/blog/"/>
+    
+      <category term="Computer Science" scheme="http://fuyaoli.me/tags/Computer-Science/"/>
     
   </entry>
   
