@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://fuyaoli.me/2021/08/15/flink-time-system-watermark/</loc>
+        <lastmod>2021-08-16T02:18:45.479Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://fuyaoli.me/2019/05/01/graphql-4/</loc>
         <lastmod>2019-05-31T22:33:57.008Z</lastmod>
         <changefreq>weekly</changefreq>

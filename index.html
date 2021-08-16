@@ -131,17 +131,17 @@
 
 
 
-<meta name="description" content="Keep coding!">
+<meta name="description" content="Backend / Big data / Frontend / DevOps">
 <meta name="keywords" content="UC Irvine">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Fuyao Li">
 <meta property="og:url" content="http://fuyaoli.me/index.html">
 <meta property="og:site_name" content="Fuyao Li">
-<meta property="og:description" content="Keep coding!">
+<meta property="og:description" content="Backend / Big data / Frontend / DevOps">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fuyao Li">
-<meta name="twitter:description" content="Keep coding!">
+<meta name="twitter:description" content="Backend / Big data / Frontend / DevOps">
 
 
 
@@ -213,7 +213,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">UC Irvine, Department of Computer Science, Master of Science in Networked Systems</p>
+        <p class="site-subtitle">Application Engineer @ Oracle, UC Irvine Alumni</p>
       
   </div>
 
@@ -353,6 +353,252 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://fuyaoli.me/2021/08/15/flink-time-system-watermark/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fuyao Li">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fuyao Li">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/08/15/flink-time-system-watermark/" itemprop="url">1 - Flink time system and Watermark Introduction</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-08-15T15:05:14-07:00">
+                2021-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flink/" itemprop="url" rel="index">
+                    <span itemprop="name">Flink</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/08/15/flink-time-system-watermark/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/08/15/flink-time-system-watermark/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2021/08/15/flink-time-system-watermark/" class="leancloud_visitors" data-flag-title="1 - Flink time system and Watermark Introduction">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>This Flink knowledge share on time system and watermark is the first post in the Flink series based on Flink 1.13 release. This post will not only share some definitions copied from Flink official documentation, but also share some additional insights regarding time system / watermark programming based on my past experience. If you have any questions, please feel free to post questions in the comment section at the bottom.</p>
+<p>The content in this post will be focusing on the topics below.</p>
+<ul>
+<li>Processing Time / Event Time</li>
+<li>Watermark in Flink</li>
+<li>The relationship between event time / timestamp assigner / watermark</li>
+<li>Write a customized watermark</li>
+<li>Typical watermark troubleshooting examples in Flink</li>
+</ul>
+<h1 id="Processing-Time-Event-Time"><a href="#Processing-Time-Event-Time" class="headerlink" title="Processing Time / Event Time"></a>Processing Time / Event Time</h1><p>Flink is a distributed data processing system. In a distributed sytem, in order to coordinate the progress of different subtasks running on different cores / machines, we need to configure the time semantic in Flink to control the advancement of data flow.</p>
+<p><strong>Official documentation</strong>: <a href="https://ci.apache.org/projects/flink/flink-docs-release-1.13/docs/concepts/time/#notions-of-time-event-time-and-processing-time" target="_blank" rel="noopener">Processing time / Event time</a></p>
+<h2 id="Processing-Time"><a href="#Processing-Time" class="headerlink" title="Processing Time"></a>Processing Time</h2><p>Processing time refers to the system time of the machine that is executing the respective operation. Processing time is the simplest notion of time and requires no coordination between streams and machines. It provides the best performance and the lowest latency. However, in distributed and asynchronous environments processing time does not provide determinism, because it is susceptible to the speed at which records arrive in the system (for example from the message queue), to the speed at which the records flow between operators inside the system, and to outages (scheduled, or otherwise).</p>
+<h2 id="Event-Time"><a href="#Event-Time" class="headerlink" title="Event Time"></a>Event Time</h2><p>Event time is the time that each individual event occurred on its producing device. This time is typically embedded within the records before they enter Flink, and that event timestamp can be extracted from each record. In event time, the progress of time depends on the data, not on any wall clocks. Event time programs must specify how to generate Event Time Watermarks, which is the mechanism that signals progress in event time. This watermarking mechanism is described in a later section <a href="#Watermark-in-Flink">Watermark in Flink</a>.</p>
+<h2 id="Coding-Additional-Notes"><a href="#Coding-Additional-Notes" class="headerlink" title="Coding / Additional Notes"></a>Coding / Additional Notes</h2><p>Latest approach as of 08/15/2021.</p>
+<ul>
+<li>Currently, event time is configured as the default time semantic. If you want to use processing time inside the code, you can directly use <code>System.currentTimeMillis()</code> or you can directly register <code>processingTimeTimer</code> in the process function. The old way of configuring time semantic through <code>StreamExecutionEnvironment.setStreamTimeCharacteristic()</code> is deprecated.</li>
+</ul>
+<p>See details in the <a href="https://ci.apache.org/projects/flink/flink-docs-release-1.13/release-notes/flink-1.12/#flip-134-batch-execution-for-the-datastream-api" target="_blank" rel="noopener">release note</a>.</p>
+<ul>
+<li>For history archived data processing, processing time can’t work. Only event time can guarantee correct time semantic.</li>
+<li>To guarantee deterministic result of stream processing, user must use event time.</li>
+</ul>
+<h1 id="Watermark-in-Flink"><a href="#Watermark-in-Flink" class="headerlink" title="Watermark in Flink"></a>Watermark in Flink</h1><h3 id="What-is-watermark"><a href="#What-is-watermark" class="headerlink" title="What is watermark?"></a>What is watermark?</h3><p><strong>Official documentation</strong>: <a href="https://ci.apache.org/projects/flink/flink-docs-release-1.13/docs/concepts/time/#event-time-and-watermarks" target="_blank" rel="noopener">Watermark</a><br><strong>Cloudera documentation</strong>: <a href="https://docs.cloudera.com/csa/1.2.0/flink-overview/topics/csa-watermark.html" target="_blank" rel="noopener">Using Watermark in Flink</a></p>
+<p>From my understanding, watermark is a progress tracker of the current event time processing (watermark only applies for event time processing). When we emit a watermark in the data stream, it is creating an marker in the data stream, all the timers and data before the marker will be 100% fired and processed. There are different watermark strategies you can defined, they are always intended to lag behind the timestamp extracted from the latest message (In some cases, if there is high back pressure and extreme cases, this might not be true and it will lead to wrong results if you have <a href="https://ci.apache.org/projects/flink/flink-docs-release-1.13/docs/concepts/stateful-stream-processing/" target="_blank" rel="noopener">stateful data processing</a>).</p>
+<h3 id="Watermark-in-parallel-streams"><a href="#Watermark-in-parallel-streams" class="headerlink" title="Watermark in parallel streams"></a>Watermark in parallel streams</h3><p>The graph below is an illustration of the watermark in a multi-parallelism operator. I have summarized some key points below.</p>
+<p><img src="/images/watermark.png" alt="Flink watermark Image" width="80%"></p>
+<ul>
+<li>With event time processing, flink interval clock inside an operator will advance only if the ovreall watermark increases.</li>
+<li>Each parallelism in an operator owns an independent watermark (For example, we have an operator of parallelism 3, it maintains <code>watermark-1</code>, <code>watermark-1</code>, <code>watermark-3</code>).</li>
+<li>The overall watermark of an Flink operator is determined by minimum watermark of all parallelisms’ watermark. <code>Overall watermark = min (watermark-1, watermark-2, watermark-3)</code></li>
+<li>The Event time timers in all parallelisms within an Flink operator (an transformation step) are all driven by overall watermark.</li>
+<li>If a parallelism (subtask) doesn’t receive messages for a while, it can be marked as <a href="https://ci.apache.org/projects/flink/flink-docs-release-1.13/docs/dev/datastream/event-time/generating_watermarks/#dealing-with-idle-sources" target="_blank" rel="noopener"><strong>idle</strong></a>and it will quit the computation of overall watermark. For example, parallism 3 doesn’t receive message for a configured period of time (<code>withIdleness()</code> configuration), <code>watermark-3</code> is lagging behind. However, since it is marked as idle now, overall watermark = min(watermark-1, watermark-2, <del>watermark-3</del> ). As a result, the overall watermark will be pushed forward, the event time timer in parallelism 3 will be fired.</li>
+</ul>
+<h2 id="The-relationship-between-event-time-timestamp-assigner-watermark"><a href="#The-relationship-between-event-time-timestamp-assigner-watermark" class="headerlink" title="The relationship between event time / timestamp assigner / watermark"></a>The relationship between event time / timestamp assigner / watermark</h2><ul>
+<li><strong>Event time</strong>: Event time is an time attribute carried along with the data object.</li>
+<li><strong>TimestampAssigner</strong>: Timestamp assigner is a built-in abstraction of assigning timestamps to each datastream record. The timestamp is usually derived from the an attribute in the incoming message (the event time mentioned above). If not assigned explicitly, if you use Kafka/Kinesis, the Kakfa/Kinesis timestamp will be directly applied to the ingested datastream as the timestamp.</li>
+<li><strong>Watermark</strong>: We pick some messages’ <code>event time timestamp</code> as the source information for the watermark generation. Programmer will further make some modification to this <code>event time timestamp</code> based on certain strategies and their use case to build a <a href="#Write-a-customized-watermark">customized watermark generator</a>. Although <a href="https://ci.apache.org/projects/flink/flink-docs-release-1.13/docs/dev/datastream/event-time/generating_watermarks/#writing-a-punctuated-watermarkgenerator" target="_blank" rel="noopener">emitting watermark for every message is possible</a>, we usually don’t emit a watermark for every message since it will cause a heavy pressure to the system.</li>
+</ul>
+<h1 id="Write-a-customized-watermark"><a href="#Write-a-customized-watermark" class="headerlink" title="Write a customized watermark"></a>Write a customized watermark</h1><h2 id="Official-documentation"><a href="#Official-documentation" class="headerlink" title="Official documentation"></a>Official documentation</h2><ul>
+<li><a href="https://ci.apache.org/projects/flink/flink-docs-release-1.13/docs/dev/datastream/event-time/generating_watermarks/" target="_blank" rel="noopener">Watermark Generation</a></li>
+<li><a href="https://ci.apache.org/projects/flink/flink-docs-release-1.13/docs/dev/datastream/event-time/built_in/" target="_blank" rel="noopener">Flink build-in watermark Generation</a></li>
+</ul>
+<h2 id="A-full-example"><a href="#A-full-example" class="headerlink" title="A full example"></a>A full example</h2><p>This example is a periodic watermark strategy.</p>
+<h2 id="Call-the-watermark-strategy"><a href="#Call-the-watermark-strategy" class="headerlink" title="Call the watermark strategy"></a>Call the watermark strategy</h2><p>Flink documentation: <a href="https://ci.apache.org/projects/flink/flink-docs-release-1.13/docs/dev/datastream/event-time/generating_watermarks/#using-watermark-strategies" target="_blank" rel="noopener">Using Watermark Strategies</a></p>
+<h2 id="Watermark-class-example"><a href="#Watermark-class-example" class="headerlink" title="Watermark class example"></a>Watermark class example</h2><p>This is an example of the bounded out of orderness. Just for reference purpose.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// In the main class configure the autoWatermarkInterval</span></span><br><span class="line">streamEnvironment.getConfig().setAutoWatermarkInterval(<span class="number">200</span>); <span class="comment">// this value defaults to 200ms if not configured</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyPeriodicWatermarkStrategy</span> <span class="keyword">implements</span> <span class="title">WatermarkStrategy</span>&lt;<span class="title">MyEvent</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> WatermarkGenerator&lt;MyEvent&gt; <span class="title">createWatermarkGenerator</span><span class="params">(WatermarkGeneratorSupplier.Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> WatermarkGenerator&lt;&gt;() &#123;</span><br><span class="line">            <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> maxOutOfOrderness = <span class="number">3500</span>;</span><br><span class="line">            <span class="keyword">private</span> <span class="keyword">long</span> currentMaxTimestamp;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEvent</span><span class="params">(MyEvent event, <span class="keyword">long</span> eventTimestamp, WatermarkOutput output)</span> </span>&#123;</span><br><span class="line">                currentMaxTimestamp = Math.max(currentMaxTimestamp, eventTimestamp);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPeriodicEmit</span><span class="params">(WatermarkOutput output)</span> </span>&#123;</span><br><span class="line">                <span class="comment">// emit the watermark as current highest timestamp minus the out-of-orderness bound</span></span><br><span class="line">                output.emitWatermark(<span class="keyword">new</span> Watermark(currentMaxTimestamp - maxOutOfOrderness - <span class="number">1</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TimestampAssigner&lt;MyEvent&gt; <span class="title">createTimestampAssigner</span><span class="params">(TimestampAssignerSupplier.Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (myEventMessage, previousElementTimestamp) -&gt; extractEpochEventTime();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Long <span class="title">extractEpochEventTime</span><span class="params">(MyEvent event)</span> </span>&#123;</span><br><span class="line">        LocalDateTime localDateTime = LocalDateTime.parse(event.getTimeStamp());</span><br><span class="line">        ZonedDateTime utc = ZonedDateTime.of(localDateTime, ZoneId.of(<span class="string">"UTC"</span>));</span><br><span class="line">        <span class="keyword">return</span> utc.withZoneSameInstant(ZoneId.systemDefault()).toInstant().toEpochMilli();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Comparison-of-different-customize-strategies-mentioned-in-the-Flink-doc"><a href="#Comparison-of-different-customize-strategies-mentioned-in-the-Flink-doc" class="headerlink" title="Comparison of different customize strategies mentioned in the Flink doc"></a>Comparison of different customize strategies mentioned in the Flink doc</h3><p>The doc below share my understanding of the tradeoffs between different watermark strategies. All of them are not perfect and might fit into some use cases. <strong>In some more complex cases, developer should invest more time to understand the system characteristic and develop some custom mechanism to ensure correct event time semantic</strong>.</p>
+<p>(1) Periodic watermark strategy<br>Developer can configure a autoWatermarkInterval parameter to be N milliseconds. This will let the <code>onPeriodEmit</code> method triggered once every N milliseconds. See <a href="#Watermark-class-example">example</a> above.</p>
+<table>
+<thead>
+<tr>
+<th>Watermark Strategy</th>
+<th>Description</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bounded out of orderness periodic watermark strategy</td>
+<td><ul><li>compute the maximum event time (op_ts) in the incoming messages in the current parallelism (subtask)</li><li>emit a watermark (maximum_event_time - order_of_orderness - 1) every N milliseconds  </li></ul></td>
+<td>With this strategy, if there is backpressure, the watermark will just slow down along with event time extracted from messages. It will not advancing too fast and causing the window to not group elements correctly.</td>
+<td>If there is no new messages coming for a period of time in all subtasks, it will cause troubles. In this case, even if you configured withIdleness(), you still can’t advance the overall watermark since no new messages can be used to push the watermark forward. As a result, event time timers are stuck and can’t be fired until a new messages come in. For more info, refer to <a href="https://stackoverflow.com/questions/46432368/flink-window-does-not-process-data-at-end-of-stream" target="_blank" rel="noopener">link</a></td>
+</tr>
+<tr>
+<td>fixed time lag periodic watermark strategy</td>
+<td>* In onPeriodicEmit method, this strategy generates watermarks that are lagging processing time (System.currentTimeMillis()) by a fixed amount. It assumes that elements arrive in Flink after a bounded delay.</td>
+<td>Not matter there is event or not, the watermark will always advance, so that the event time timers will not face the issue of not being able to be triggered. However, the window might be wrong.</td>
+<td><ul><li>If there is no backpressure, the difference between op_ts and flink processing is usually fixed, around 4 - 5 seconds. However, when there is a lot trail file, this latency could increase to 5-6 minutes or even more. At this time, the fixed time lag is not correctly reflecting the event time advancement.</li><li>If there is high back pressure, the consumption speed is slowed down, however, the watermark is still advancing along with the processing time with a fixed delay. In such case, the fixed time lag is not correctly reflecting the event time advancement.</li></ul></td>
+</tr>
+</tbody>
+</table>
+<p>(2) Punctuated watermark strategy</p>
+<ul>
+<li>A punctuated watermark generator will observe the stream of events and emit a watermark whenever it sees a special element that carries watermark information. You can defined some rules to determine what is a special element.</li>
+<li>It is possible to generate a watermark on every single event. However, because each watermark causes some computation downstream, an excessive number of watermarks degrades performance.<br>The pros and cons are very similar to <code>Bounded out of orderness periodic watermark strategy</code>. For simplicity, I will not repeat here.</li>
+</ul>
+<h1 id="Typical-watermark-troubleshooting-examples-in-Flink"><a href="#Typical-watermark-troubleshooting-examples-in-Flink" class="headerlink" title="Typical watermark troubleshooting examples in Flink"></a>Typical watermark troubleshooting examples in Flink</h1><p>The problems below are some typical problems you will meet during designing a scalable Flink architecture. The docuementations below will give some good ideas of troubleshooting.</p>
+<h2 id="Watermark-skew-problem"><a href="#Watermark-skew-problem" class="headerlink" title="Watermark skew problem"></a>Watermark skew problem</h2><p>[1][2]</p>
+<h2 id="Watermark-unbalanced-data"><a href="#Watermark-unbalanced-data" class="headerlink" title="Watermark unbalanced data"></a>Watermark unbalanced data</h2><p>[2]</p>
+<h2 id="History-data-replay-backfill-use-case"><a href="#History-data-replay-backfill-use-case" class="headerlink" title="History data replay - backfill use case"></a>History data replay - backfill use case</h2><p>[2][3]</p>
+<h2 id="Troubleshooting-backpressure"><a href="#Troubleshooting-backpressure" class="headerlink" title="Troubleshooting backpressure"></a>Troubleshooting backpressure</h2><p>[4][5][6]</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1]<a href="https://www.ververica.com/blog/how-mitigating-event-time-skewness-can-reduce-checkpoint-failures-and-task-manager-crashes" target="_blank" rel="noopener">https://www.ververica.com/blog/how-mitigating-event-time-skewness-can-reduce-checkpoint-failures-and-task-manager-crashes</a><br>[2]<a href="https://youtu.be/X3L75Rz64Ns" target="_blank" rel="noopener">https://youtu.be/X3L75Rz64Ns</a><br>[3]<a href="https://www.ververica.com/blog/replayable-process-functions-time-ordering-and-timers" target="_blank" rel="noopener">https://www.ververica.com/blog/replayable-process-functions-time-ordering-and-timers</a><br>[4]<a href="https://www.ververica.com/blog/how-flink-handles-backpressure" target="_blank" rel="noopener">https://www.ververica.com/blog/how-flink-handles-backpressure</a> Chinese version blog: <a href="http://wuchong.me/blog/2016/04/26/flink-internals-how-to-handle-backpressure/" target="_blank" rel="noopener">http://wuchong.me/blog/2016/04/26/flink-internals-how-to-handle-backpressure/</a><br>[5]Flame graph: <a href="https://issues.apache.org/jira/browse/FLINK-13550?spm=a2c6h.12873639.0.0.7dcc4d93szHR48" target="_blank" rel="noopener">https://issues.apache.org/jira/browse/FLINK-13550?spm=a2c6h.12873639.0.0.7dcc4d93szHR48</a><br>[6]Back pressure: <a href="http://www.54tianzhisheng.cn/2019/08/26/flink-back-pressure/" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2019/08/26/flink-back-pressure/</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -2185,225 +2431,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://fuyaoli.me/2019/04/14/graphql-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Fuyao Li">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Fuyao Li">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/14/graphql-2/" itemprop="url">GraphQL-2 GraphQL Schema Language</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-14T19:57:36-07:00">
-                2019-04-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/GraphQL/" itemprop="url" rel="index">
-                    <span itemprop="name">GraphQL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/14/graphql-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/14/graphql-2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/04/14/graphql-2/" class="leancloud_visitors" data-flag-title="GraphQL-2 GraphQL Schema Language">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="GraphQL-Type-System"><a href="#GraphQL-Type-System" class="headerlink" title="GraphQL Type System"></a>GraphQL Type System</h2><p>GraphQL have strong type systems. A field can be amrked with an exclamation mark ! to indicate that the field is obligatory (will not be null). Otherwise, it will be nillable (optional fields).</p>
-<ul>
-<li>During execution/resolutoin of a query, the type system helps to determine what to do next.</li>
-<li>When crafting queries, the introspection mechanism provided through the type system, allows us to do syntax directly editing and guide us with respect to what is possible and available.</li>
-</ul>
-<h2 id="Root-types"><a href="#Root-types" class="headerlink" title="Root types"></a>Root types</h2><p>Root types can be used as the starting point for a certain operation.</p>
-<ul>
-<li>Query</li>
-<li>Mutation</li>
-<li>Subscription<h3 id="Notice"><a href="#Notice" class="headerlink" title="Notice"></a>Notice</h3>Every graphQL implementation must ahve define a query and a mutation and subscription can be optional.</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">type Query &#123;</span><br><span class="line">    books: [Book]</span><br><span class="line">    book(title:String!): Book</span><br><span class="line">    book_by_id(id:ID!):Book</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Mutation &#123;</span><br><span class="line">    addBook(title: String!): Book</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Subscription &#123;</span><br><span class="line">    bookAdded: Book</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Scalar-Types"><a href="#Scalar-Types" class="headerlink" title="Scalar Types"></a>Scalar Types</h2><h3 id="built-in-GraphQL-scalar-types"><a href="#built-in-GraphQL-scalar-types" class="headerlink" title="built-in GraphQL scalar types"></a>built-in GraphQL scalar types</h3><ul>
-<li>int</li>
-<li>float</li>
-<li>boolean</li>
-<li>String</li>
-<li>ID (used uniquely identify an object)</li>
-</ul>
-<h3 id="Custom-scalar-types"><a href="#Custom-scalar-types" class="headerlink" title="Custom scalar types"></a>Custom scalar types</h3><ul>
-<li>Isbn (example)</li>
-<li>[Author] (square brackets represent a list of things)</li>
-</ul>
-<h2 id="Array-representation"><a href="#Array-representation" class="headerlink" title="Array representation"></a>Array representation</h2><ul>
-<li>Used to express a list of objects</li>
-<li>[int]</li>
-<li>[Book]</li>
-</ul>
-<h2 id="Enum"><a href="#Enum" class="headerlink" title="Enum"></a>Enum</h2><p>An enum has a limited set of values it can possibly to take on.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">enum trafficLight &#123;</span><br><span class="line">    RED</span><br><span class="line">    GREEN</span><br><span class="line">    YELLOW</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Interface"><a href="#Interface" class="headerlink" title="Interface"></a>Interface</h2><ul>
-<li><p>An interface is similar to a type definition, it defines a list of fields, but it can’t be instantiated.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">interface Document &#123;</span><br><span class="line">    title: String</span><br><span class="line">    text: String</span><br><span class="line">    authors: [Author]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>A regular type that implements the interface can extend the interface.</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type Book implements Document &#123;</span><br><span class="line">    id: ID!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>The implementing type automatically contains the fields defined in the interface, they don’t need to be mentioned explicitly.</li>
-<li>To access the additional fields of a type implementing an interface in a query, we always need to make a distinction by type using inline fragments.(refer to section3.3.6)</li>
-</ul>
-<h2 id="Union"><a href="#Union" class="headerlink" title="Union"></a>Union</h2><ul>
-<li>A <em>Union</em> is a common type for serveral defining types. If an object is of a union type, it could be any of it s defining types.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union Product = Book | Software | Bread</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="Differences-between-Union-and-interfaces"><a href="#Differences-between-Union-and-interfaces" class="headerlink" title="Differences between Union and interfaces"></a>Differences between Union and interfaces</h3><ul>
-<li>interface is to express common fields</li>
-<li>union don’t need to have fields in common</li>
-<li>To access the fields of a union type, we need to make a distinction by type using in the inline fragments.(section3.3.6)</li>
-</ul>
-<h2 id="Input-Types"><a href="#Input-Types" class="headerlink" title="Input Types"></a>Input Types</h2><p>Input types are used for passing input data in the form of arguments. Input types are used in mutations. When an instance of an input type is serialized, the data is formatted in JSON syntax.</p>
-<ul>
-<li>It looks like the definition of regular object types, but with keyword <strong>input</strong> instead of <strong>type</strong>.</li>
-<li>!!!! Input types can’t have fields of an object type, only scalar types, list types, and other input types.</li>
-<li>To prevent mixing, it is a useful convention, to amrk input types, e.g. by using the postfix Input.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">input BookInput &#123;</span><br><span class="line">    title: String</span><br><span class="line">    authors: [AuthorInput]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">input AuthorInput &#123;</span><br><span class="line">    name: String</span><br><span class="line">    books: [BookInput]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2446,7 +2473,7 @@
               <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpeg" alt="Fuyao Li">
             
               <p class="site-author-name" itemprop="name">Fuyao Li</p>
-              <p class="site-description motion-element" itemprop="description">Keep coding!</p>
+              <p class="site-description motion-element" itemprop="description">Backend / Big data / Frontend / DevOps</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -2456,7 +2483,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2467,7 +2494,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2478,7 +2505,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2555,7 +2582,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
